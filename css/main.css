@@ -1,0 +1,43 @@
+
+
+:root{
+    --pageWidth:1000px;
+}
+
+/* global */
+.mainBox>.inner{max-width:var(--pageWidth);margin:0 auto;}
+.formBox1 input, .formBox1 select{border-radius:.5rem;}
+.formBox1 .trip{display: flex;flex-wrap: wrap;gap: 1rem;align-items: center;}
+.formBox1 .group.small{max-width:100px;}
+.formBox1 form .btns{width: 100%;display:flex;justify-content: center;}
+.btns .btn{border-radius:25px;max-width:200px;}
+.btns .btn.icon{height:40px;width:40px;line-height: 50%;}
+.formBox1 *:focus{outline: none;}
+
+/* ferry result cards */
+.ferryResultCards .card{background:rgb(223, 240, 255);max-width:1000px;padding:.5rem 2rem;border-radius:1rem;box-shadow:.3rem .3rem .5rem rgba(0,0,0,.2);}
+.ferryResultCards .cardHead .dyDetail{font-weight: bold;}
+.ferryResultCards .cardBody{display:flex;gap:1rem;justify-content: space-between;margin-top:1rem;}
+.ferryResultCards .ferryDetails{max-width:150px;}
+.ferryResultCards .ferryDetails .imgBox{width:100%;}
+.ferryResultCards .ferryDetails .imgBox img{width:100%;border-radius:.5rem}
+.ferryResultCards .ferryDetails .ferryName{text-align: center;}
+.ferryResultCards .ferryDetails .includesIcons{display:flex;flex-wrap: wrap;margin-top:1rem;}
+.ferryResultCards .ferryDetails .includesIcons>*{flex:1 1 26%;min-width:30px;}
+.ferryResultCards .timingBox{background:#fff;height:80px;display:flex;justify-content: space-between;align-items: center;padding:1rem;border-radius:.5rem;}
+.ferryResultCards .timingBox .sector{font-size:.7rem;}
+.ferryResultCards .timingBox .duration{padding:.2rem 1rem;background:aliceblue;border-radius:1rem;}
+.ferryResultCards .seatClasses{display:flex;flex-wrap: wrap;gap:1rem;padding-block:1rem;}
+.ferryResultCards .seatClass{border:5px solid transparent;max-width:180px;display:flex;flex-direction: column;text-align: center;border-radius:.5rem;overflow: hidden;cursor: pointer;}
+.ferryResultCards .seatClass>*{padding:.5rem;}
+.ferryResultCards .seatClass .className{background-color:#5a7ef3;color:#fff;font-weight: bold;}
+.ferryResultCards .seatClass .seatBox{background-color:#c8d6ff;}
+.ferryResultCards .seatClass .priceBox{background-color:#dfe7ff;}
+.ferryResultCards .seatClass.active{border-color: rgb(0, 0, 89);}
+.ferryResultCards .bookBtns{max-width:100px;display:grid;place-items:center;}
+
+.userDetailsMainBox .userDetails{background:rgb(207, 218, 227);padding:1rem;}
+.userContactDetails{max-width:700px;margin:0 auto 1rem;}
+.userContactDetails .ttl{text-align: center;font-size:1.5rem;font-weight:600;margin-bottom:1rem;}
+.userContactDetails table td{min-width:170px;}
+.userDetails table td{padding:.3rem .2rem;}

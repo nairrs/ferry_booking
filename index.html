@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/util.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- fyyt yuu v cvvs-->
+</head>
+<body>
+    <div class="mainBox searchMainBox">
+        <div class="inner">
+            <div class="mainBoxBody">
+                <div class="formBox1">
+                    <div class="tripBox">
+                        <div class="trip">
+                            <div class="group ">
+                                <label for="">Date</label>
+                                <input type="date" name="date">
+                            </div>
+                            <div class="group">
+                                <label for="">From</label>
+                                <select name="from" id="">
+                                    <option value="pb">Port Blair</option>
+                                    <option value="hl">Havelock Island</option>
+                                    <option value="nl">Neil Island</option>
+                                </select>
+                            </div>
+                            <div class="group">
+                                <label for="">To</label>
+                                <select name="from" id="">
+                                    <option value="pb">Port Blair</option>
+                                    <option value="hl">Havelock Island</option>
+                                    <option value="nl">Neil Island</option>
+                                </select>
+                            </div>
+                            <div class="group small">
+                                <label for="">Adult</label>
+                                <input type="number" name="adult">
+                            </div>
+                            <div class="group small">
+                                <label for="">Infant</label>
+                                <input type="number" name="infant">
+                            </div>
+                            <div class="btns">
+                                <span class="btn icon">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btns">
+                        <button class="btn" onclick="getTripDataRequest()">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mainBox resultMainBox">
+        <div class="inner">
+            <div class="mainBoxBody">
+                <div class="ferryResultCards">
+                    <div class="card">
+                        <!-- <div class="cardHead">
+                            <p class="dyDetail"><span class="date">30-11-2023</span>, <span class="sectors">Port Blair - Swaraj Dweep(Havelock)</span></p>
+                            <p class="seatAviablityDesc">Seat selection at the time of web-checkin 48Hrs before departure.</p>
+                        </div> -->
+                        <div class="cardBody">
+                            <div class="ferryDetails">
+                                <div class="imgBox">
+                                    <img src="img/5e3aaf6f1fee8-Portblair_Attractions.jpg" alt="ferry">
+                                </div>
+                                <p class="ferryName">Makruzz</p>
+                                <div class="includesIcons">
+                                    <i>0</i><i>0</i><i>0</i><i>0</i><i>0</i><i>0</i>
+                                </div>
+                            </div>
+                            <div class="shedule-class">
+                                <div class="timingBox">
+                                    <div class="fromTime">
+                                        <p class="time">6:00</p>
+                                        <p class="sector">Port Blair</p>
+                                    </div>
+                                    <div class="durationBox">
+                                        <p class="duration">01:30 hrs</p>
+                                    </div>
+                                    <div class="toTime">
+                                        <p class="time">8:00</p>
+                                        <p class="sector">Swaraj deep</p>
+                                    </div>
+                                </div>
+                                <div class="seatClasses">
+                                    <div class="seatClass">
+                                        <div class="className">
+                                            Premium
+                                        </div>
+                                        <div class="seatBox">
+                                            <span class="seat">250</span>
+                                            <br>
+                                            (available seats)
+                                        </div>
+                                        <div class="priceBox">
+                                            <p>Rs. <span class="price">900</span>/-</p>
+                                        </div>
+                                    </div>
+                                    <div class="seatClass active">
+                                        <div class="className">
+                                            Premium
+                                        </div>
+                                        <div class="seatBox">
+                                            <span class="seat">250</span>
+                                            <br>
+                                            (available seats)
+                                        </div>
+                                        <div class="priceBox">
+                                            <p>Rs. <span class="price">900</span>/-</p>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <div class="classDesc">
+                                    <p class="class">
+                                        <span class="name">Premium :</span>
+                                        <span class="desc">Located on the lower deck offers front and side sea views.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="bookBtns">
+                                <div class="btns">
+                                    <button class="btn">Select & Proceed</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mainBox seatSelectionMainBox">
+        <div class="inner">
+            <div class="mainBoxBody">
+
+            </div>
+        </div>
+    </div>
+    <div class="mainBox userDetailsMainBox">
+        <div class="inner">
+            <div class="mainBoxBody">
+                <div class="userDetails">
+                    <div class="formBox1">
+                        <form action="">
+                            <div class="userContactDetails">
+                                <p class="ttl">Enter Passengers Details</p>
+                                <table>
+                                    <tr>
+                                        <td>Passenger<br>
+                                        GSTIN (optional)</td>
+                                        <td><input type="text" name="gst" placeholder="GSTIN (optional)"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td><input type="email" name="email" placeholder="Email"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone Number</td>
+                                        <td><input type="text" name="phone" placeholder="10 digit phone number"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="userPersonalDetails">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Sno</th>
+                                            <th>Title</th>
+                                            <th>Passenger Name</th>
+                                            <th>Gender</th>
+                                            <th>Age</th>
+                                            <th>Nationality</th>
+                                            <th>ID Number</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                <select name="title" id="">
+                                                    <option value="MR">MR</option>
+                                                    <option value="MRS">MRS</option>
+                                                    <option value="Miss">Miss</option>
+                                                    <option value="Master">Master</option>
+                                                    <option value="DR">DR</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="text" name="name" placeholder="Name"></td>
+                                            <td>
+                                                <select name="gender" id="">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Femail">Femail</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="number" name="age" placeholder="Age"></td>
+                                            <td>
+                                                <select name="nationality" id="" onchange="nationality(value)">
+                                                    <option value="India">India</option>
+                                                    <option value="China">China</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="btns">
+                                <button class="btn" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+    </style>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
