@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@codesandbox/utils": "^1.0.2"
+  }
+}

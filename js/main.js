@@ -1,8 +1,13 @@
+import { getCodeSandboxHost } from "@codesandbox/utils";
+
+const port = 3000;
+const previewUrl = `https://${getCodeSandboxHost(port)}`;
+
 // single multi trip toggle
 function toggleTrip(btn) {
   let tripBox = document.querySelector(".tripBox");
   let trips = tripBox.querySelectorAll(".trip");
-
+codesandbox-cli
   // If there is only one tripBox, add two more
   if (trips.length === 1) {
     let newTripBox1 = trips[0].cloneNode(true);
