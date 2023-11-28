@@ -14,8 +14,23 @@
 .btns .btn.icon{height:40px;width:40px;line-height: 50%;}
 .formBox1 *:focus{outline: none;}
 
+/* body */
+body.ferryPages{background:rgb(224, 229, 234);}
+
+.ferryPages .mainBox{background:#fff;max-width:1200px;margin:1rem auto;}
+.ferryPages .mainBox.onlyTtlMainBox{background:transparent;text-align: center;}
+.ferryPages .mainBox.onlyTtlMainBox .ttl{font-size: 2rem;}
+.ferryPages .mainBox.onlyTtlMainBox .desc{font-size:1rem;}
+
+/* ferry serch form */
+.searchMainBox .formBox1 .onlyLabel{width:100%;display: flex;gap:1rem;}
+.searchMainBox .formBox1 .onlyLabel .btns{width:40px;}
+.searchMainBox .formBox1 .group{flex:1 1 200px;}
+.searchMainBox .formBox1 .tripBox .group{border:1px solid lightblue;border-radius: .2rem;overflow: hidden;margin-bottom:1rem;}
+
 /* ferry result cards */
-.ferryResultCards .card{background:rgb(223, 240, 255);max-width:1000px;padding:.5rem 2rem;border-radius:1rem;box-shadow:.3rem .3rem .5rem rgba(0,0,0,.2);}
+.ferryResultCards{}
+.ferryResultCards .card{background:rgb(223, 240, 255);max-width:1000px;padding:.5rem 2rem;border-radius:1rem;box-shadow:.3rem .3rem .5rem rgba(0,0,0,.2);margin-bottom: 1rem;}
 .ferryResultCards .cardHead .dyDetail{font-weight: bold;}
 .ferryResultCards .cardBody{display:flex;gap:1rem;justify-content: space-between;margin-top:1rem;}
 .ferryResultCards .ferryDetails{max-width:150px;}
@@ -41,3 +56,22 @@
 .userContactDetails .ttl{text-align: center;font-size:1.5rem;font-weight:600;margin-bottom:1rem;}
 .userContactDetails table td{min-width:170px;}
 .userDetails table td{padding:.3rem .2rem;}
+
+/* ferryStructure */
+.ferryStructure .inner{display:flex;justify-content: center;flex-wrap: wrap;gap:1rem;}
+.ferryStructure .structureBox{width:400px;position: relative;isolation: isolate;}
+.ferryStructure .structureBox img{width:100%;z-index:-2;}
+.ferryStructure .seat{height:25px;width:25px;border:1px solid #aaa;display: grid;place-items: center;font-size:12px;text-transform: uppercase;cursor: pointer;background:#fff;}
+.ferryStructure .seat.booked{background:#ccc;cursor: not-allowed;}
+.ferryStructure .seat.selected{background: green;}
+
+.vessel1 .v1-business .seatBox{position: absolute;top:8%;left:26%;height:180px;width:190px;display: flex;gap:1rem;justify-content: space-between;}
+.vessel1 .v1-business .seatBox .seats{display:flex;flex-wrap: wrap;gap:5px;width:45%;}
+.vessel1 .v1-business .seatBox .seats.left{height:135px;}
+.vessel1 .v1-business .seatBox .seats.right{margin-top:1rem;height:150px;}
+
+.vessel1 .v1-premium .seatBox1{position: absolute;top:20%;left:26%;height:180px;width:190px;display: flex;gap:1rem;justify-content: space-between;background-color:green;}
+.vessel1 .v1-premium .seatBox2{position: absolute;top: 57%;
+    left: 7%;
+    height: 290px;
+    width: 340px;display: flex;gap:1rem;justify-content: space-between;background-color:green;}

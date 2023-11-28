@@ -1,49 +1,88 @@
 
+// single multi trip toggle
+function toggleTrip(btn) {
+  let tripBox = document.querySelector('.tripBox');
+  let trips = tripBox.querySelectorAll('.trip');
 
-// Function to make the getTripData request
-function getTripDataRequest() {
-    console.log('clicked');
-    // Replace with your actual username and token
-    const userName = "andamanbookings";
-    const token = "U2FsdGVkX1/6f+diqV/siI2zagdg9XjliNhE5Pwna5A/KPOqR2cR9XZprm/9YuRDnEytof87Cq8i60eDMpfC9w==";
-  
-    // API endpoint for getTripData
-    const apiUrl = "http://api.dev.gonautika.com:8012/getTripData";
-  
-    // Request data
-    const requestData = {
-      date: "2-12-2023",
-      from: "Port Blair",
-      to: "Swaraj Dweep",
-      userName: userName,
-      token: token,
+  // If there is only one tripBox, add two more
+  if (trips.length === 1) {
+    let newTripBox1 = trips[0].cloneNode(true);
+    let newTripBox2 = trips[0].cloneNode(true);
+    tripBox.appendChild(newTripBox1);
+    tripBox.appendChild(newTripBox2);
+
+    btn.innerText = '^';
+
+    // Replace the button function with deleteTrip for the remaining tripBoxes
+    let trips2 = tripBox.querySelectorAll('.trip');
+    for (let i = 1; i < trips2.length; i++) {
+      let btn = trips2[i].querySelector('.tripsAddBtn');
+      btn.innerHTML = 'X';
+      btn.setAttribute('onclick', 'deleteTrip(this)')
+    }
+  } else {
+    // If there are more than one tripBoxes, remove all except the first one
+    for (let i = trips.length - 1; i > 0; i--) {
+      tripBox.removeChild(trips[i]);
     };
-  
-    // Fetch options
-    const fetchOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    };
-  
-    // Make the fetch request
-    fetch(apiUrl, fetchOptions)
-      .then(response => response.json())
-      .then(data => {
-        // Handle the response data here
-        console.log("getTripData Response:", data);
-        // You can process the 'data' object to display trip information on your webpage
-      })
-      .catch(error => {
-        // Handle any errors that occurred during the fetch
-        console.error("Error fetching getTripData:", error);
-      });
+    btn.innerText = 'v';
   }
-  
-  // Call the function to make the getTripData request
-  getTripDataRequest();
+}
 
-  // extra
-  
+function deleteTrip(btn) {
+  let tripBox = document.querySelector('.tripBox');
+  let btnp = btn.parentElement;
+  let btnpp = btnp.parentElement;
+  tripBox.removeChild(btnpp);
+}
+
+function sectorSelection(selectElement) {
+  var selectedValue = selectElement.value;
+  var parent = selectElement.parentNode.parentNode;
+  var toSelect = parent.querySelector('.group.toSelect select');
+  let options = toSelect.options;
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].value === selectedValue) {options[i].disabled = true;options[i].selected = false}
+    else{options[i].disabled = false;}
+    console.log('okk');
+    }
+}
+
+function replan(){
+  document.querySelector('.resultMainBox').classList.add('dnone')
+  document.querySelector('.searchMainBox').classList.remove('dnone')
+}
+
+function resultCardSeatClassActive(){
+  let cardBox = document.querySelector('.ferryResultCards');
+  let cards = cardBox.querySelectorAll('.card');
+  cards.forEach(card => {
+    let seatClasses = card.querySelectorAll('.seatClass');
+    seatClasses.forEach(seatClass => {
+      seatClass.addEventListener('click', ()=>{
+        seatClasses.forEach(seatClass1 =>{
+          seatClass1.classList.remove('active');
+        });
+        seatClass.classList.add('active')
+      })
+    });
+  });
+};
+
+function seatSelection(){
+  document.querySelector('.resultMainBox').classList.add('dnone')
+  document.querySelector('.seatSelectionMainBox').classList.remove('dnone');
+  seatClicked();
+};;
+
+function seatClicked(){
+  let seats = document.querySelectorAll('.seats .seat');
+  seats.forEach(seat => {
+    seat.addEventListener('click',()=>{
+      seat.classList.toggle('selected');
+    })
+  });
+};
+
+// delete after work
+

@@ -8,43 +8,82 @@
     <link rel="stylesheet" href="css/main.css">
     <!-- fyyt yuu v cvvs-->
 </head>
-<body>
-    <div class="mainBox searchMainBox">
+<body class="ferryPages">
+    <div class="mainBox onlyTtlMainBox dnone">
+        <div class="inner">
+            <div class="mainBoxTtl">
+                <div class="ttl">Realtime Ferry Booking in Andaman</div>
+                <div class="desc">
+                    Book Ferry to Andaman Islands for Port Blair, Havelock and Neil Island. First time in Andaman, get ZERO wait time and get instant tickets. This is a realtime ferry booking site for Andaman Islands by Experience Andamans. You can instantly book and download the tickets for your travel.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mainBox searchMainBox dnone">
         <div class="inner">
             <div class="mainBoxBody">
+                <!-- <div class="formBox1">
+                    <div class="group singleLine">
+                        <label for="">Number of Trips</label>
+                        <select name="" id="" onchange="noOfTrips(value)">
+                            <option value="1">One Way Trip</option>
+                            <option value="2">Two Ways Trip</option>
+                            <option value="3">Three Ways Trip</option>
+                        </select>
+                    </div>
+                </div> -->
                 <div class="formBox1">
+                    <div class="onlyLabel">
+                        <div class="group ">
+                            <label for="">Date</label>
+                        </div>
+                        <div class="group">
+                            <label for="">From</label>
+                        </div>
+                        <div class="group">
+                            <label for="">To</label>
+                        </div>
+                        <div class="group small">
+                            <label for="">Adult</label>
+                        </div>
+                        <div class="group small">
+                            <label for="">Infant</label>
+                        </div>
+                        <div class="btns">
+                        </div>
+                    </div>
                     <div class="tripBox">
                         <div class="trip">
                             <div class="group ">
-                                <label for="">Date</label>
+                                <!-- <label for="">Date</label> -->
                                 <input type="date" name="date">
                             </div>
                             <div class="group">
-                                <label for="">From</label>
-                                <select name="from" id="">
+                                <!-- <label for="">From</label> -->
+                                <select name="from" id="" onchange="sectorSelection(this)">
                                     <option value="pb">Port Blair</option>
                                     <option value="hl">Havelock Island</option>
                                     <option value="nl">Neil Island</option>
                                 </select>
                             </div>
-                            <div class="group">
-                                <label for="">To</label>
+                            <div class="group toSelect">
+                                <!-- <label for="">To</label> -->
                                 <select name="from" id="">
-                                    <option value="pb">Port Blair</option>
-                                    <option value="hl">Havelock Island</option>
+                                    <option value="pb" disabled>Port Blair</option>
+                                    <option value="hl" >Havelock Island</option>
                                     <option value="nl">Neil Island</option>
                                 </select>
                             </div>
                             <div class="group small">
-                                <label for="">Adult</label>
+                                <!-- <label for="">Adult</label> -->
                                 <input type="number" name="adult">
                             </div>
                             <div class="group small">
-                                <label for="">Infant</label>
+                                <!-- <label for="">Infant</label> -->
                                 <input type="number" name="infant">
                             </div>
                             <div class="btns">
-                                <span class="btn icon">+</span>
+                                <span class="btn icon tripsAddBtn" onclick="toggleTrip(this)" style="pointer-events:none;cursor:none;">+</span>
                             </div>
                         </div>
                     </div>
@@ -58,6 +97,9 @@
     <div class="mainBox resultMainBox">
         <div class="inner">
             <div class="mainBoxBody">
+                <div class="btns mb-2">
+                    <div class="btn" onclick="replan()">Replan</div>
+                </div>
                 <div class="ferryResultCards">
                     <div class="card">
                         <!-- <div class="cardHead">
@@ -139,6 +181,116 @@
         <div class="inner">
             <div class="mainBoxBody">
 
+                <div class="ferryStructure">
+                    <div class="inner vessel1">
+                        <div class="class2 structureBox v1-business">
+                            <img src="img/v1-business.png" alt="">
+                            <div class="seatBox ">
+                                <div class="seats left">
+                                    <div class="seat booked">a1</div>
+                                    <div class="seat">s2</div>
+                                    <div class="seat selected">d3</div>
+                                    <div class="seat">f4</div>
+                                    <div class="seat">4g</div>
+                                    <div class="seat">6h</div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                                <div class="seats right">
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="class1 structureBox v1-premium">
+                            <img src="img/v1-premium.png" alt="">
+                            <div class="seatBox1">
+                                <div class="seats left">
+                                    <div class="seat booked">a1</div>
+                                    <div class="seat">s2</div>
+                                    <div class="seat selected">d3</div>
+                                    <div class="seat">f4</div>
+                                    <div class="seat">4g</div>
+                                    <div class="seat">6h</div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                                <div class="seats right">
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                            </div>
+                            <div class="seatBox2">
+                                <div class="seats left">
+                                    <div class="seat booked">a1</div>
+                                    <div class="seat">s2</div>
+                                    <div class="seat selected">d3</div>
+                                    <div class="seat">f4</div>
+                                    <div class="seat">4g</div>
+                                    <div class="seat">6h</div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                                <div class="seats right">
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                    <div class="seat"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -224,6 +376,7 @@
     </style>
 
     <script src="js/main.js"></script>
+    <script src="js/request_handler.js"></script>
 
 </body>
 </html>

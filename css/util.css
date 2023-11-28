@@ -149,6 +149,9 @@ background: rgba(255,255,255,.5);
 .LV>*>*>*>*>*>*>*{background-color:rgba(251, 255, 29, 0.4);}
 .LV>*>*>*>*>*>*>*>*{background-color:rgba(255, 0, 221, 0.3);}
 
+/* margin padding */
+.mb-2{margin-bottom:2rem;}
+
 /* table */
 .table1{border-collapse: collapse;margin: 1rem;}
 .table1 *{border: 1px solid lightgray;padding:9px 15px;text-align: center;font-size: .8rem;}
