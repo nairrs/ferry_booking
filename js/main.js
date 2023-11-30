@@ -1,7 +1,3 @@
-import { getCodeSandboxHost } from "@codesandbox/utils";
-
-const port = 3000;
-const previewUrl = `https://${getCodeSandboxHost(port)}`;
 
 // single multi trip toggle
 function toggleTrip(btn) {
@@ -80,18 +76,42 @@ function resultCardSeatClassActive() {
 function seatSelection() {
   document.querySelector(".resultMainBox").classList.add("dnone");
   document.querySelector(".seatSelectionMainBox").classList.remove("dnone");
-  seatClicked();
+  seatClicked(2);
+  seatNoAllot();
 }
-
-function seatClicked() {
+let totalNoOfSeats = 0;
+function seatClicked(totalSeat) {
+  let TS = totalSeat;
   let seats = document.querySelectorAll(".seats .seat");
+
   seats.forEach((seat) => {
     seat.addEventListener("click", () => {
-      seat.classList.toggle("selected");
+      if(seat.classList.contains('selected')){
+        seat.classList.remove("selected");
+        totalNoOfSeats--;
+      }else{
+        if(TS <= totalNoOfSeats){
+          alert(`You already selected ${TS} seats.`)
+          return;
+        }else{
+          seat.classList.add("selected");
+          totalNoOfSeats++;
+        }
+      }
     });
+  });
+}
+
+function seatNoAllot(){
+  let seats = document.querySelectorAll('.ferryStructure .seat');
+  seats.forEach(seat => {
+    let sd = seat.getAttribute('data-sn');
+    if(sd){
+      sd = sd.toLocaleUpperCase()
+      seat.innerHTML = sd;
+    }
   });
 }
 
 // delete after work
 
-console.log("okk");
