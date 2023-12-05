@@ -1,53 +1,55 @@
 
+ 
 
-// Function to make the getTripData request
-function getTripDataRequest() {
- document.querySelector('.searchMainBox').classList.add('dnone');;
- document.querySelector('.resultMainBox').classList.remove('dnone');
+function getTripData(){
+  const apiUrl = 'http://api.dev.gonautika.com:8012/';
+  const username = 'andamanbookings';
+  const token = 'U2FsdGVkX1/6f+diqV/siI2zagdg9XjliNhE5Pwna5A/KPOqR2cR9XZprm/9YuRDnEytof87Cq8i60eDMpfC9w==';
+  const token1 = 'U2FsdGVkX1+iuapxY7XIKxLqtZY7Ye57mU78c+BBNX04u8VEEMgrMEQY3xRT2C29g2YGiwCUTpP5duG34vXaUExuKkOwutgfK62uIyv3ZgU=';
 
-  // Replace with your actual username and token
-  const userName = "andamanbookings";
-  const token = "U2FsdGVkX1/6f+diqV/siI2zagdg9XjliNhE5Pwna5A/KPOqR2cR9XZprm/9YuRDnEytof87Cq8i60eDMpfC9w==";
 
-  // API endpoint for getTripData
-  // const apiUrl = "http://api.dev.gonautika.com:8012/getTripData";
-  const apiUrl = "js/data.json";
+  // let tDate = document.querySelector('.tripBox .tDate').value;
+  // console.log()
+  // const selectedDate = new Date(tDate);
+  // const formattedDate = `${selectedDate.getDate().toString().padStart(2, '0')}-${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${selectedDate.getFullYear()}`;
+  
+  // let tFrom = document.querySelector('.tripBox .tFrom').value;
+  // let tTo = document.querySelector('.tripBox .tTo').value;
+  // let tAdult = document.querySelector('.tripBox .tAdult').value;
+  // let tInfant = document.querySelector('.tripBox .tInfant').value;
 
-  // Request data
-  const requestData = {
-    date: "2-12-2023",
-    from: "Port Blair",
-    to: "Swaraj Dweep",
-    userName: userName,
-    token: token,
+  var userRouteInput = {
+    "date": document.querySelector('.tripBox .tDate').value,
+    "from": document.querySelector('.tripBox .tFrom').value,
+    "to": document.querySelector('.tripBox .tTo').value,
+    "userName": "Andamanbooking",
+    "token": "U2e5gctrduG34vXa8UExu0KkOwutgfKr62uIyv3ZgU="
+};
+
+console.log(userRouteInput)
+
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json"); // Correcting content type
+
+  var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(userRouteInput), // Correcting body
+      redirect: 'follow'
   };
 
-  // Fetch options
-  const fetchOptions = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // body: JSON.stringify(requestData),
-  };
+  fetch("http://localhost/ferry_booking/php/main2.php?getTrip", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
 
-  // Make the fetch request
-  fetch(apiUrl, fetchOptions)
-    .then(response => response.json())
-    .then(data => {
-      // Handle the response data here
-      // console.log("getTripData Response:", data);
-      // You can process the 'data' object to display trip information on your webpage
-      createResultCards(data)
-    })
-    .catch(error => {
-      // Handle any errors that occurred during the fetch
-      console.error("Error fetching getTripData:", error);
-    });
 }
 
-// Call the function to make the getTripData request
-// getTripDataRequest();
+
+
+
+    
+
 
 var ferrDetails = [
   { ID: '1', name: 'Nutika 1', img: 'nutika1.jpg', clickFun:'seatSelection()'},
@@ -161,5 +163,5 @@ console.log(ferrys)
 
 
 // delete after work
-seatSelection();
-getTripDataRequest()
+// seatSelection();
+// getTripDataRequest()

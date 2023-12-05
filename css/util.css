@@ -151,6 +151,8 @@ background: rgba(255,255,255,.5);
 
 /* margin padding */
 .mb-2{margin-bottom:2rem;}
+.mt-2{margin-top:2rem;}
+.mt-4{margin-top:4rem;}
 
 /* table */
 .table1{border-collapse: collapse;margin: 1rem;}

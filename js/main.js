@@ -53,8 +53,8 @@ function sectorSelection(selectElement) {
 }
 
 function replan() {
-  document.querySelector(".resultMainBox").classList.add("dnone");
-  document.querySelector(".searchMainBox").classList.remove("dnone");
+  // document.querySelector(".resultMainBox").classList.add("dnone");
+  // document.querySelector(".searchMainBox").classList.remove("dnone");
 }
 
 function resultCardSeatClassActive() {
@@ -74,8 +74,8 @@ function resultCardSeatClassActive() {
 }
 
 function seatSelection() {
-  document.querySelector(".resultMainBox").classList.add("dnone");
-  document.querySelector(".seatSelectionMainBox").classList.remove("dnone");
+  // document.querySelector(".resultMainBox").classList.add("dnone");
+  // document.querySelector(".seatSelectionMainBox").classList.remove("dnone");
   seatClicked(2);
   seatNoAllot();
 }

@@ -1,0 +1,49 @@
+{
+    "err": null,
+    "data": {
+        "_id": "6540edacda0808617554b6b0",
+        "userName": "andamanbookings",
+        "agency": "Andaman Bookings.com",
+        "phoneNumber": "9933279792",
+        "email": "andamanbookings.com@gmail.com",
+        "commission": {
+            "sealink": {
+                "pb_swd_p": 350,
+                "pb_swd_b": 400,
+                "swd_shd_p": 200,
+                "swd_shd_b": 250,
+                "shd_pb_p": 250,
+                "shd_pb_b": 300,
+                "swd_pb_p": 350,
+                "swd_pb_b": 400,
+                "pb_swd_shd_p": 250,
+                "pb_swd_shd_b": 300,
+                "swd_shd_pb_p": 250,
+                "swd_shd_pb_b": 300
+            },
+            "nautika": {
+                "pb_swd_p": 250,
+                "pb_swd_b": 300,
+                "swd_shd_p": 200,
+                "swd_shd_b": 250,
+                "shd_pb_p": 250,
+                "shd_pb_b": 300,
+                "swd_pb_p": 250,
+                "swd_pb_b": 300,
+                "pb_swd_shd_p": 250,
+                "pb_swd_shd_b": 300,
+                "swd_shd_pb_p": 250,
+                "swd_shd_pb_b": 300
+            },
+            "override": false,
+            "v": "v3"
+        },
+        "apiData": {
+            "timestamp": 1698753977,
+            "key": "U2FsdGVkX1+iuapxY7XIKxLqtZY7Ye57mU78c+BBNX04u8VEEMgrMEQY3xRT2C29g2YGiwCUTpP5duG34vXaUExuKkOwutgfK62uIyv3ZgU=",
+            "isActive": true
+        },
+        "odCap": 0,
+        "walletBalance": 100000
+    }
+}

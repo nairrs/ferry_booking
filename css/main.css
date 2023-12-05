@@ -83,3 +83,29 @@ body.ferryPages{background:rgb(224, 229, 234);}
 .vessel1 .v1-premium .seatBox2{position: absolute;top: 58%;left: 8%;height: 280px;width: 340px;display: flex;gap:1rem;justify-content: space-between;}
 .vessel1 .v1-premium .seatBox2 .seats{width:30%;}
 .vessel1 .v1-premium .seatBox2 .seats.center{width:39%;}
+
+.vessel2 .seatBox .seats{gap:0px;height: min-content;}
+.vessel2 .seatBox .seat{width:22px;height:28px;font-size:10px;}
+.vessel2 .v2-royal .seatBox{position: absolute;top: 45%;left:15%;height:355px;width:275px;display: grid;grid-template-columns:3fr 6fr 3fr;}
+.vessel2 .v2-royal .seatBox .seats{display: grid;gap:0px;max-height:330px;}
+.vessel2 .v2-royal .seatBox .seats.left{grid-template-columns: 1fr 1fr;padding-right: 33%;}
+.vessel2 .v2-royal .seatBox .seats.center{margin-top:6rem;grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;max-height:200px;}
+.vessel2 .v2-royal .seatBox .seats.right{display: flex;}
+.vessel2 .v2-royal .seatBox .seats.right .subSeat1{width:100%;display: grid;grid-template-columns: 1fr 1fr 1fr;}
+.vessel2 .v2-royal .seatBox .seats.right .subSeat2{display: grid;grid-template-columns: 1fr 1fr;padding-left:33%;}
+
+.vessel2 .v2-luxury .seatBox1{position: absolute;top:18%;left:12%;height:280px;width:305px;display: flex;justify-content:space-between;align-items: center;transform-origin: center;}
+.vessel2 .v2-luxury .seatBox1 .seats{width:67px;}
+.vessel2 .v2-luxury .seatBox1 .seats.center{justify-content: center;width:135px;}
+.vessel2 .v2-luxury .seatBox1 .subSeat1, .vessel2 .v2-luxury .seatBox1 .subSeat2{display: flex;flex-wrap: wrap;}
+.vessel2 .v2-luxury .seatBox1 .seats.center .subSeat2{justify-content: center;}
+
+.vessel2 .v2-luxury .seatBox2{position: absolute;top:44%;left:12%;width:305px;display: flex;justify-content:space-between;}
+.vessel2 .v2-luxury .seatBox2 .seats{width:67px;}
+.vessel2 .v2-luxury .seatBox2 .seats.center{justify-content: center;width:135px;margin-top: 3rem;}
+.vessel2 .v2-luxury .seatBox2 .subSeat1, .vessel2 .v2-luxury .seatBox2 .subSeat2{display: flex;flex-wrap: wrap;}
+.vessel2 .v2-luxury .seatBox2 .seats.center .subSeat2{justify-content: center;}
+
+
+
+

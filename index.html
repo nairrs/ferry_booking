@@ -10,7 +10,7 @@
     <!-- fyyt yuu v cvvs-->
 </head>
 <body class="ferryPages">
-    <div class="mainBox onlyTtlMainBox dnone">
+    <div class="mainBox onlyTtlMainBox ">
         <div class="inner">
             <div class="mainBoxTtl">
                 <div class="ttl">Realtime Ferry Booking in Andaman</div>
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div class="mainBox searchMainBox dnone">
+    <div class="mainBox searchMainBox ">
         <div class="inner">
             <div class="mainBoxBody">
                 <!-- <div class="formBox1">
@@ -55,13 +55,9 @@
                     </div>
                     <div class="tripBox">
                         <div class="trip">
-                            <div class="group ">
-                                <!-- <label for="">Date</label> -->
-                                <input type="date" name="date">
-                            </div>
                             <div class="group">
                                 <!-- <label for="">From</label> -->
-                                <select name="from" id="" onchange="sectorSelection(this)">
+                                <select name="from" id="" onchange="sectorSelection(this)" class="tFrom">
                                     <option value="pb">Port Blair</option>
                                     <option value="hl">Havelock Island</option>
                                     <option value="nl">Neil Island</option>
@@ -69,33 +65,37 @@
                             </div>
                             <div class="group toSelect">
                                 <!-- <label for="">To</label> -->
-                                <select name="from" id="">
+                                <select name="from" id="" class="tTo">
                                     <option value="pb" disabled>Port Blair</option>
                                     <option value="hl" >Havelock Island</option>
                                     <option value="nl">Neil Island</option>
                                 </select>
                             </div>
+                            <div class="group ">
+                                <!-- <label for="">Date</label> -->
+                                <input type="date" name="date" class="tDate">
+                            </div>
                             <div class="group small">
                                 <!-- <label for="">Adult</label> -->
-                                <input type="number" name="adult">
+                                <input type="number" name="adult" class="tAdult">
                             </div>
                             <div class="group small">
                                 <!-- <label for="">Infant</label> -->
-                                <input type="number" name="infant">
+                                <input type="number" name="infant" class="tInfant">
                             </div>
                             <div class="btns">
                                 <span class="btn icon tripsAddBtn" onclick="toggleTrip(this)" style="pointer-events:none;cursor:none;">+</span>
                             </div>
                         </div>
                     </div>
-                    <div class="btns">
-                        <button class="btn" onclick="getTripDataRequest()">Search</button>
+                    <div class="btns mt-2">
+                        <button class="btn" onclick="getTripData()">Search</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="mainBox resultMainBox">
+    <div class="mainBox resultMainBox dnone">
         <div class="inner">
             <div class="mainBoxBody">
                 <div class="btns mb-2">
@@ -178,7 +178,7 @@
             </div>
         </div>
     </div>
-    <div class="mainBox seatSelectionMainBox">
+    <div class="mainBox seatSelectionMainBox dnone">
         <div class="inner">
             <div class="mainBoxBody">
 
@@ -190,39 +190,194 @@
             <div class="seats left">
                 <div class="seat" data-sn="1a"></div>
                 <div class="seat" data-sn="1b"></div>
-                <div class="seat" data-sn="1c"></div>
                 <div class="seat" data-sn="2a"></div>
                 <div class="seat" data-sn="2b"></div>
-                <div class="seat" data-sn="2c"></div>
                 <div class="seat" data-sn="3a"></div>
                 <div class="seat" data-sn="3b"></div>
-                <div class="seat" data-sn="3c"></div>
                 <div class="seat" data-sn="4a"></div>
                 <div class="seat" data-sn="4b"></div>
-                <div class="seat" data-sn="4c"></div>
+                <div class="seat" data-sn="5a"></div>
+                <div class="seat" data-sn="5b"></div>
+                <div class="seat" data-sn="6a"></div>
+                <div class="seat" data-sn="6b"></div>
+                <div class="seat" data-sn="7a"></div>
+                <div class="seat" data-sn="7b"></div>
+                <div class="seat" data-sn="8a"></div>
+                <div class="seat" data-sn="8b"></div>
+                <div class="seat" data-sn="9a"></div>
+                <div class="seat" data-sn="9b"></div>
+                <div class="seat" data-sn="10a"></div>
+                <div class="seat" data-sn="10b"></div>
+                <div class="seat" data-sn="11a"></div>
+                <div class="seat" data-sn="11b"></div>
+                <div class="seat" data-sn="12a"></div>
+                <div class="seat" data-sn="12b"></div>
             </div>
-            <div class="seats right">
-                <div class="seat" data-sn="1d"></div>
-                <div class="seat" data-sn="1e"></div>
-                <div class="seat" data-sn="1f"></div>
-                <div class="seat" data-sn="2d"></div>
-                <div class="seat" data-sn="2e"></div>
-                <div class="seat" data-sn="2f"></div>
-                <div class="seat" data-sn="3d"></div>
-                <div class="seat" data-sn="3e"></div>
-                <div class="seat" data-sn="3f"></div>
-                <div class="seat" data-sn="4d"></div>
-                <div class="seat" data-sn="4e"></div>
-                <div class="seat" data-sn="4f"></div>
+            <div class="seats center">
+                <div class="seat" data-sn="5c"></div>
                 <div class="seat" data-sn="5d"></div>
                 <div class="seat" data-sn="5e"></div>
                 <div class="seat" data-sn="5f"></div>
+                <div class="seat" data-sn="5g"></div>
+                <div class="seat" data-sn="5h"></div>
+                <div class="seat" data-sn="6c"></div>
+                <div class="seat" data-sn="6d"></div>
+                <div class="seat" data-sn="6e"></div>
+                <div class="seat" data-sn="6f"></div>
+                <div class="seat" data-sn="6g"></div>
+                <div class="seat" data-sn="6h"></div>
+                <div class="seat" data-sn="7c"></div>
+                <div class="seat" data-sn="7d"></div>
+                <div class="seat" data-sn="7e"></div>
+                <div class="seat" data-sn="7f"></div>
+                <div class="seat" data-sn="7g"></div>
+                <div class="seat" data-sn="7h"></div>
+                <div class="seat" data-sn="8c"></div>
+                <div class="seat" data-sn="8d"></div>
+                <div class="seat" data-sn="8e"></div>
+                <div class="seat" data-sn="8f"></div>
+                <div class="seat" data-sn="8g"></div>
+                <div class="seat" data-sn="8h"></div>
+                <div class="seat" data-sn="9c"></div>
+                <div class="seat" data-sn="9d"></div>
+                <div class="seat" data-sn="9e"></div>
+                <div class="seat" data-sn="9f"></div>
+                <div class="seat" data-sn="9g"></div>
+                <div class="seat" data-sn="9h"></div>
+                <div class="seat" data-sn="10c"></div>
+                <div class="seat" data-sn="10d"></div>
+                <div class="seat" data-sn="10e"></div>
+                <div class="seat" data-sn="10f"></div>
+                <div class="seat" data-sn="10g"></div>
+                <div class="seat" data-sn="10h"></div>
+                <div class="seat" data-sn="11c"></div>
+                <div class="seat" data-sn="11d"></div>
+                <div class="seat" data-sn="11e"></div>
+                <div class="seat" data-sn="11f"></div>
+                <div class="seat" data-sn="11g"></div>
+                <div class="seat" data-sn="11h"></div>
+            </div>
+            <div class="seats right">
+                <div class="subSeat1">
+                    <div class="seat" data-sn="1d"></div>
+                    <div class="seat" data-sn="1e"></div>
+                    <div class="seat" data-sn="1f"></div>
+                    <div class="seat" data-sn="2d"></div>
+                    <div class="seat" data-sn="2e"></div>
+                    <div class="seat" data-sn="2f"></div>
+                </div>
+                <div class="subSeat2">
+                    <div class="seat" data-sn="3d"></div>
+                    <div class="seat" data-sn="3e"></div>
+                    <div class="seat" data-sn="3f"></div>
+                    <div class="seat" data-sn="4d"></div>
+                    <div class="seat" data-sn="4e"></div>
+                    <div class="seat" data-sn="4f"></div>
+                    <div class="seat" data-sn="5d"></div>
+                    <div class="seat" data-sn="5e"></div>
+                    <div class="seat" data-sn="5f"></div>
+                    <div class="seat" data-sn="3d"></div>
+                    <div class="seat" data-sn="3e"></div>
+                    <div class="seat" data-sn="3f"></div>
+                    <div class="seat" data-sn="4d"></div>
+                    <div class="seat" data-sn="4e"></div>
+                    <div class="seat" data-sn="4f"></div>
+                    <div class="seat" data-sn="5d"></div>
+                    <div class="seat" data-sn="5e"></div>
+                    <div class="seat" data-sn="5f"></div>
+                    <div class="seat" data-sn="5f"></div>
+                    <div class="seat" data-sn="5f"></div>
+                </div>
+
             </div>
         </div>
     </div>
     <div class="class1 structureBox v2-luxury">
         <img src="img/v2-luxury.png" alt="">
         <div class="seatBox seatBox1">
+            <div class="seats left">
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+            </div>
+            <div class="seats center">
+                <div class="subSeat1">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                </div>
+                <div class="subSeat2">
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                </div>
+            </div>
+            <div class="seats right">
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+            </div>
+        </div>
+        <div class="seatBox seatBox2">
             <div class="seats left">
                 <div class="seat"></div>
                 <div class="seat"></div>
@@ -269,6 +424,48 @@
                     <div class="seat"></div>
                     <div class="seat"></div>
                     <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
+                    <div class="seat"></div>
                 </div>
                 <div class="subSeat2">
                     <div class="seat"></div>
@@ -276,121 +473,12 @@
                     <div class="seat"></div>
                     <div class="seat"></div>
                     <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
-                    <div class="seat"></div>
                 </div>
             </div>
             <div class="seats right">
                 <div class="seat"></div>
                 <div class="seat"></div>
                 <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>                                    <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-            </div>
-        </div>
-        <div class="seatBox seatBox2">
-            <div class="seats left">
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                
-            </div>
-            <div class="seats center">
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-            </div>
-            <div class="seats right">
                 <div class="seat"></div>
                 <div class="seat"></div>
                 <div class="seat"></div>
@@ -667,7 +755,7 @@
             </div>
         </div>
     </div>
-    <div class="mainBox userDetailsMainBox">
+    <div class="mainBox userDetailsMainBox dnone">
         <div class="inner">
             <div class="mainBoxBody">
                 <div class="userDetails">
@@ -746,7 +834,8 @@
         </div>
     </div>
 
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/request_handler.js"></script>
+
 </body>
 </html>
