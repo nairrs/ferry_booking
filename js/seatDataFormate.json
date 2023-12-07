@@ -1,0 +1,81 @@
+{
+    "bookingData": [
+        {
+            "bookingTS": 1665920428,
+            "id": "634315dcb1ce433d102a1084",
+            "tripId": 1665972000,
+            "vesselID": 2,
+            "from": "Port Blair",
+            "to": "Swaraj Dweep",
+            "paxDetail": {
+                "email": "test@test.com",
+                "phone": "9999899998",
+                "gstin": "",
+                "pax": [
+                    {
+                        "id": 1,
+                        "name": "Pax Name",
+                        "age": "22",
+                        "gender": "M",
+                        "nationality": "India",
+                        "passport": "",
+                        "tier": "P",
+                        "seat": "2A",
+                        "isCancelled": 0
+                    },
+                    {
+                        "id": 2,
+                        "name": "Pax Name",
+                        "age": "22",
+                        "gender": "M",
+                        "nationality": "India",
+                        "passport": "",
+                        "tier": "P",
+                        "seat": "2B",
+                        "isCancelled": 0
+                    }
+                ],
+                "infantPax": [
+                    {
+                        "id": 1,
+                        "name": "inf a",
+                        "dobTS": 1661970600,
+                        "dob": "2022-09-01",
+                        "gender": "M",
+                        "nationality": "India",
+                        "passport": "",
+                        "isCancelled": 0
+                    },
+                    {
+                        "id": 2,
+                        "name": "inf b",
+                        "dobTS": 1662661800,
+                        "dob": "2022-09-09",
+                        "gender": "M",
+                        "nationality": "India",
+                        "passport": "",
+                        "isCancelled": 0
+                    }
+                ],
+                "bClassSeats": [],
+                "pClassSeats": [
+                    "2A",
+                    "2B"
+                ]
+            },
+            "userData": {
+                "apiUser": {
+                    "userName": "agent",
+                    "agency": "",
+                    "token": "U2FsdGVkX18+ji7DedFzFnkTxo/aFlcWsvmp03XU5bgJ5XE9r1/DCIKHCabpP24hxlAB0F2kFnOYvu9FZaJiNA==",
+                    "walletBalance": 0
+                }
+            },
+            "paymentData": {
+                "gstin": ""
+            }
+        }
+    ],
+    "userName": "agent",
+    "token": "U2FsdGVkX18+ji7DedFzFnkTxo/aFlcWsvmp03XU5bgJ5XE9r1/DCIKHCabpP24hxlAB0F2kFnOYvu9FZaJiNA=="
+}

@@ -58,17 +58,17 @@
                             <div class="group">
                                 <!-- <label for="">From</label> -->
                                 <select name="from" id="" onchange="sectorSelection(this)" class="tFrom">
-                                    <option value="pb">Port Blair</option>
-                                    <option value="hl">Havelock Island</option>
-                                    <option value="nl">Neil Island</option>
+                                    <option value="Port Blair">Port Blair</option>
+                                    <option value="Swaraj Dweep" >Havelock Island</option>
+                                    <option value="Shaheed Dweep">Neil Island</option>
                                 </select>
                             </div>
                             <div class="group toSelect">
                                 <!-- <label for="">To</label> -->
-                                <select name="from" id="" class="tTo">
-                                    <option value="pb" disabled>Port Blair</option>
-                                    <option value="hl" >Havelock Island</option>
-                                    <option value="nl">Neil Island</option>
+                                <select name="to" id="" class="tTo">
+                                    <option value="Port Blair" disabled>Port Blair</option>
+                                    <option value="Swaraj Dweep" >Havelock Island</option>
+                                    <option value="Shaheed Dweep">Neil Island</option>
                                 </select>
                             </div>
                             <div class="group ">
@@ -77,7 +77,7 @@
                             </div>
                             <div class="group small">
                                 <!-- <label for="">Adult</label> -->
-                                <input type="number" name="adult" class="tAdult">
+                                <input type="number" name="adult" class="tAdult" value="2">
                             </div>
                             <div class="group small">
                                 <!-- <label for="">Infant</label> -->
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     <div class="btns mt-2">
-                        <button class="btn" onclick="getTripData()">Search</button>
+                        <button class="btn" onclick="demoGetTripData()">Search</button>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                         <div class="cardBody">
                             <div class="ferryDetails">
                                 <div class="imgBox">
-                                    <img src="img/5e3aaf6f1fee8-Portblair_Attractions.jpg" alt="ferry">
+                                    <img src="" alt="ferry">
                                 </div>
                                 <p class="ferryName">Makruzz</p>
                                 <div class="includesIcons">
@@ -178,12 +178,15 @@
             </div>
         </div>
     </div>
+
     <div class="mainBox seatSelectionMainBox dnone">
         <div class="inner">
             <div class="mainBoxBody">
-
+                <div class="btns mt-2">
+                    <div class="btn" onclick="replan()">Replan</div>
+                </div>
                 <div class="ferryStructure">
-<div class="inner vessel2">
+<div class="inner vessel2 dnone">
     <div class="class2 structureBox v2-royal">
         <img src="img/v2-royal.png" alt="">
         <div class="seatBox">
@@ -752,12 +755,18 @@
 
 </div>
                 </div>
+                <div class="btns mt-2">
+                    <div class="btn" onclick="passengerDetailsPage()">Passenger Details</div>
+                </div>
             </div>
         </div>
     </div>
     <div class="mainBox userDetailsMainBox dnone">
         <div class="inner">
             <div class="mainBoxBody">
+                <div class="btns mt-2 mb-2">
+                    <div class="btn" onclick="replan()">Replan</div>
+                </div>
                 <div class="userDetails">
                     <div class="formBox1">
                         <form action="">
@@ -767,15 +776,15 @@
                                     <tr>
                                         <td>Passenger<br>
                                         GSTIN (optional)</td>
-                                        <td><input type="text" name="gst" placeholder="GSTIN (optional)"></td>
+                                        <td><input type="text" name="gst" placeholder="GSTIN (optional)" value="uyguguds"></td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
-                                        <td><input type="email" name="email" placeholder="Email"></td>
+                                        <td><input type="email" name="email" placeholder="Email" value="dummyemail@gmail.com"></td>
                                     </tr>
                                     <tr>
                                         <td>Phone Number</td>
-                                        <td><input type="text" name="phone" placeholder="10 digit phone number"></td>
+                                        <td><input type="text" name="phone" placeholder="10 digit phone number" value="9988233145"></td>
                                     </tr>
                                 </table>
                             </div>
