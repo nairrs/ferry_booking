@@ -13,14 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_REQUEST['getTrip'])) {
     $formattedDate = $dateTime->format('d-m-Y');
 
     $from = $requestData['from'];
-    if ($from == 'pb') {$from = 'Port Blair';}
-    else if ($from == 'hl') {$from = 'Swaraj Dweep';}
-    else {$from = 'Shaheed Dweep';};
+    // if ($from == 'pb') {$from = 'Port Blair';}
+    // else if ($from == 'hl') {$from = 'Swaraj Dweep';}
+    // else {$from = 'Shaheed Dweep';};
 
     $to = $requestData['to'];
-    if ($to == 'pb') {$to = 'Port Blair';}
-    else if ($to == 'hl') {$to = 'Swaraj Dweep';}
-    else {$to = 'Shaheed Dweep';};
+    // if ($to == 'pb') {$to = 'Port Blair';}
+    // else if ($to == 'hl') {$to = 'Swaraj Dweep';}
+    // else {$to = 'Shaheed Dweep';};
  
     $userName = 'andamanbookings';
     $token = 'U2FsdGVkX1+iuapxY7XIKxLqtZY7Ye57mU78c+BBNX04u8VEEMgrMEQY3xRT2C29g2YGiwCUTpP5duG34vXaUExuKkOwutgfK62uIyv3ZgU=';

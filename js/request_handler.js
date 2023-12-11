@@ -1,12 +1,8 @@
-
+// let serverURL = 'https://nairrs.com/ferry/';
 let serverURL = 'http://localhost/ferry_booking/';
 
 
 function getTripData() {
-  // const apiUrl = 'http://api.dev.gonautika.com:8012/';
-  // const username = 'andamanbookings';
-  // const token = 'U2FsdGVkX1/6f+diqV/siI2zagdg9XjliNhE5Pwna5A/KPOqR2cR9XZprm/9YuRDnEytof87Cq8i60eDMpfC9w==';
-  // const token1 = 'U2FsdGVkX1+iuapxY7XIKxLqtZY7Ye57mU78c+BBNX04u8VEEMgrMEQY3xRT2C29g2YGiwCUTpP5duG34vXaUExuKkOwutgfK62uIyv3ZgU=';
 
   var userRouteInput = {
     "date": document.querySelector('.tripBox .tDate').value,
@@ -27,7 +23,7 @@ function getTripData() {
   };
 
   fetch(`${serverURL}php/main2.php?getTrip`, requestOptions)
-    .then(response => response.text())
+    .then(response => response.json())
     .then(result => createResultCards(result))
     .catch(error => console.log('error', error));
 }
@@ -42,8 +38,6 @@ function demoGetTripData() {
       return response.json();
     })
     .then(data => {
-      // Process the JSON data
-      // console.log(data);
       createResultCards(data);
     })
     .catch(error => {
@@ -58,13 +52,14 @@ var ferrDetails = [
 ]
 
 function createResultCards(data) {
+  console.log(data)
 
   // ferry data
   let vessel = [], bClass = '', pClass = '', ferrys = data.data;
   sessionStorage.setItem('nautTripData', JSON.stringify(ferrys));
-  // console.log(ferrys)
   let ferryResultCards = document.querySelector('.ferryResultCards');
   ferryResultCards.innerHTML = '';
+  console.log(ferrys)
 
   ferrys.forEach(ferry => {
     ferrDetails.forEach(ferryDetail => {
