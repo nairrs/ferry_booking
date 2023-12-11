@@ -82,8 +82,8 @@ background: rgba(255,255,255,.5);
 
 /* color */
 .bg-#fff, .bg-white{background: #fff;}
-.color-danger{color: red;}
-.color-success{color: green;}
+.c-danger{color: red;}
+.c-success{color: green;}
 .facebookcolor{color:#3b5998;}
 .instagramcolor{background-image:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);box-shadow: 0px 3px 10px rgba(0,0,0,.25);background-size: 100%; -webkit-background-clip: text; -moz-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent; -moz-text-fill-color: transparent;}
 .instagramcolorbg{background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);box-shadow: 0px 3px 10px rgba(0,0,0,.25);}
@@ -199,20 +199,6 @@ footer .ftrBoxBody{display: flex;flex-direction: column;}
 footer .ftrBot>.inner{padding-block:1rem;border-top:1px solid #00000041;}
 
 
-@media screen and (max-width:1400px) {
-
-}
-@media screen and (max-width:1200px) {
- 
-}
-@media screen and (max-width:992px) {
-
-}
-@media screen and (max-width:900px){
-    
-
-}
-
 @media screen and (max-width:768px) {
     
 }
@@ -222,8 +208,6 @@ footer .ftrBot>.inner{padding-block:1rem;border-top:1px solid #00000041;}
 @media screen and (max-width:576px) {
 
 }
-
-
 
 /* 
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css); 

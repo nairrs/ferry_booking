@@ -4,6 +4,10 @@ let varTripId = '';
 let varVesselId = '';
 let varBClassSeats = [];
 let varPClassSeats = [];
+let varSeatClass = '';
+let varTotalSeatSelected = false;
+let varTotalSeat = 1;
+let totalClickedSeats = 0;
 
 
 // single multi trip toggle
@@ -60,6 +64,12 @@ function sectorSelection(selectElement) {
 }
 
 function replan() {
+  varBClassSeats = [];
+  varPClassSeats = [];
+  varSeatClass = '';
+  varTotalSeatSelected = false;
+  totalClickedSeats = 0;
+  // varTotalSeat = 1;
   document.querySelector(".onlyTtlMainBox").classList.remove("dnone");
   document.querySelector(".searchMainBox").classList.remove("dnone");
   document.querySelector(".resultMainBox").classList.add("dnone");
@@ -69,33 +79,36 @@ function replan() {
 
 function resultCardSeatClassActive() {
   let cardBox = document.querySelector(".ferryResultCards");
-  let cards = cardBox.querySelectorAll(".card");
-  cards.forEach((card) => {
-    let seatClasses = card.querySelectorAll(".seatClass");
-    seatClasses.forEach((seatClass) => {
-      seatClass.addEventListener("click", () => {
-        seatClasses.forEach((seatClass1) => {
-          seatClass1.classList.remove("active");
-        });
-        seatClass.classList.add("active");
+  let seatClasses = cardBox.querySelectorAll(".seatClass");
+
+  seatClasses.forEach((seatClass, index) => {
+    seatClass.addEventListener("click", () => {
+      seatClasses.forEach((seatClass1) => {
+        seatClass1.classList.remove("active");
       });
+      seatClass.classList.add("active");
+      let seatClassSelected = seatClass.classList;
+      varSeatClass = seatClassSelected[0];
+      
+      // Determine the index of the selected seatClass1 element
+      let selectedSeatIndex = Array.from(seatClasses).indexOf(seatClass);
+      selectedSeatIndex = (selectedSeatIndex+1)/2;
     });
   });
 }
 
 // seat selction
-let totalNoOfSeats = 0;
 function seatClicked() {
-  let totalSeat = document.querySelector('.tAdult').value
-  let TS = parseInt(totalSeat == '' ? 0 :totalSeat);
-  console.log(TS)
+  varTotalSeat = document.querySelector('.tripBox input[name="adult"]').value
+  varTotalSeat = parseInt(varTotalSeat == '' ? 0 :varTotalSeat);
 
   let seats = document.querySelectorAll(".ferryStructure .seat");
   seats.forEach((seat) => {
     seat.addEventListener("click", () => {
       if(seat.classList.contains('selected')){
         seat.classList.remove("selected");
-        totalNoOfSeats--;
+        totalClickedSeats--;
+        varTotalSeatSelected = false;
         if(seat.classList.contains('royal')){
           let seatPlace = varBClassSeats.indexOf(seat.getAttribute('data-sn'))
           varBClassSeats.splice(seatPlace,(seatPlace+1));
@@ -104,18 +117,20 @@ function seatClicked() {
           varPClassSeats.splice(seatPlace,(seatPlace+1));
         }
       }else{
-        if(TS <= totalNoOfSeats){
-          alert(`You already selected ${TS} seats.`)
+        if(varTotalSeat <= totalClickedSeats){
+          alert(`You already selected ${varTotalSeat} seats.`);
           return;
         }else{
           seat.classList.add("selected");
-          totalNoOfSeats++;
+          totalClickedSeats++;
+          if(varTotalSeat == totalClickedSeats){
+            varTotalSeatSelected = true;
+          };
           if(seat.classList.contains('royal')){
             varBClassSeats.push(seat.getAttribute('data-sn'))
           }else if(seat.classList.contains('luxury')){
             varPClassSeats.push(seat.getAttribute('data-sn'))
           }
-
         }
       };
       console.log(varBClassSeats)
@@ -158,54 +173,143 @@ function seatNoAllot(tripID) {
     }
   });
   seatClicked();
+  onlySeatClass();
 }
 
-function passengerDetailTableCreate(totalSeat){
-  let userPersonalDetails = document.querySelector('.userPersonalDetails');
-  let tBody = userPersonalDetails.querySelector('tbody');
-  tBody.innerHTML = '';
-  for (let i = 0; i < totalSeat; i++) {
-    let tr =  document.createElement('tr');
-    tr.innerHTML = `
-    <td>${i+1}</td>
-    <td>
-        <select name="title" id="">
-            <option value="MR">MR</option>
-            <option value="MRS">MRS</option>
-            <option value="Miss">Miss</option>
-            <option value="Master">Master</option>
-            <option value="DR">DR</option>
-        </select>
-    </td>
-    <td><input type="text" name="name" placeholder="Name"></td>
-    <td>
-        <select name="gender" id="">
-            <option value="Male">Male</option>
-            <option value="Femail">Femail</option>
-        </select>
-    </td>
-    <td><input type="number" name="age" placeholder="Age"></td>
-    <td>
-        <select name="nationality" id="" onchange="nationality(value)">
-            <option value="India">India</option>
-            <option value="China">China</option>
-        </select>
-    </td>
-    <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
-    `
-    tBody.appendChild(tr);    
+function onlySeatClass(){
+  if(varSeatClass == ''){return;}
+  else{
+    varSeatClass = varSeatClass.toLowerCase()
+    let structureBox = document.querySelectorAll('.ferryStructure .structureBox');
+    structureBox.forEach(seatClass => {
+      if(seatClass.classList.contains(varSeatClass)){
+        seatClass.classList.remove('dnone');
+      }else{seatClass.classList.add('dnone');}
+    });
   }
 }
 
+function passengerDetailTableCreate(totalSeat){
+  let selectedFerry = 'nautika';
+  let userPersonalDetails = document.querySelector('.userPersonalDetails');
+  let tBody = userPersonalDetails.querySelector('tbody');
+  let tHead = userPersonalDetails.querySelector('thead');
+  tBody.innerHTML = '';
+  tHead.innerHTML = '';
+
+  if(selectedFerry = 'nautika'){
+    tHead.innerHTML = `<tr>
+                          <th>Sno</th>
+                          <th>Seat</th>
+                          <th>Passenger Name</th>
+                          <th>Gender</th>
+                          <th>Age</th>
+                          <th>Nationality</th>
+                          <th>ID Number</th>
+                        </tr>
+    `;
+
+    // merging both seat class
+    function mergeAndAddPrefix(b, p) {
+      var bSeats = b.map(seat => 'Royal - ' + seat);
+      var pSeats = p.map(seat => 'Luxury - ' + seat);
+      var mergedSeats = bSeats.concat(pSeats);
+      return mergedSeats;
+    }
+    var resultArray = mergeAndAddPrefix(varBClassSeats, varPClassSeats);
+
+    for (let i = 0; i < totalSeat; i++) {
+      let tr =  document.createElement('tr');
+      tr.innerHTML = `
+      <td>${i+1}</td>
+      <td>${resultArray[i]}</td>
+      <!-- <td>
+          <select name="title" id="">
+              <option value="MR">MR</option>
+              <option value="MRS">MRS</option>
+              <option value="Miss">Miss</option>
+              <option value="Master">Master</option>
+              <option value="DR">DR</option>
+          </select>
+      </td> -->
+      <td><input type="text" name="name" placeholder="Name"></td>
+      <td>
+          <select name="gender" id="">
+              <option value="Male">Male</option>
+              <option value="Femail">Femail</option>
+          </select>
+      </td>
+      <td style="width:90px;"><input type="number" name="age" placeholder="Age"></td>
+      <td>
+          <select name="nationality" id="" onchange="nationality(value)">
+              <option value="India">India</option>
+              <option value="China">China</option>
+          </select>
+      </td>
+      <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
+      `
+      tBody.appendChild(tr);    
+    }
+  }else{
+    for (let i = 0; i < totalSeat; i++) {
+      let tr =  document.createElement('tr');
+      tr.innerHTML = `
+      <td>${i+1}</td>
+      <td>
+          <select name="title" id="">
+              <option value="MR">MR</option>
+              <option value="MRS">MRS</option>
+              <option value="Miss">Miss</option>
+              <option value="Master">Master</option>
+              <option value="DR">DR</option>
+          </select>
+      </td>
+      <td><input type="text" name="name" placeholder="Name"></td>
+      <td>
+          <select name="gender" id="">
+              <option value="Male">Male</option>
+              <option value="Femail">Femail</option>
+          </select>
+      </td>
+      <td style="width:70px"><input type="number" name="age" placeholder="Age"></td>
+      <td>
+          <select name="nationality" id="" onchange="nationality(value)">
+              <option value="India">India</option>
+              <option value="China">China</option>
+          </select>
+      </td>
+      <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
+      `
+      tBody.appendChild(tr);    
+    }
+  }
+
+
+}
+
 function passengerDetailsPage(){
+
+  if(!varTotalSeatSelected){alert(`You Didn't selected ${document.querySelector('.tripBox input[name="adult"]').value} seats.`);return;}
   document.querySelector(".seatSelectionMainBox").classList.add("dnone");
   document.querySelector(".userDetailsMainBox").classList.remove("dnone");
 
-  let TS = document.querySelector('.tAdult').value
+  let TS = document.querySelector('input[name="adult"]').value;
   let totalSeat = parseInt(TS == '' ? 0 :TS);
   passengerDetailTableCreate(totalSeat)
 }
 
+function autoDateSet(){
+  let date = new Date();
+  let CM = date.getMonth() + 1; // Months are zero-based, so add 1
+  let CD = date.getDate();
+  let FM = CM > 9 ? CM : '0' + CM;
+  let FD = CD > 9 ? CD : '0' + CD;
+  let cDateString = date.getFullYear() + '-' + FM + '-' + FD;
+  document.querySelector('.tripBox input[name="date"]').value = cDateString;
+}autoDateSet();
+
+
 
 // delete after work
 
+// passengerDetailsPage();

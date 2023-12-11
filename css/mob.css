@@ -1,0 +1,12 @@
+/* Mobile Styles */
+@media only screen and (max-width: 680px) {
+  :root{
+    --fontSizeHtml:100%;
+  }
+  .searchMainBox .formBox1{background-color:lightgray;}
+  .searchMainBox .formBox1 .tripBox .group{border:none;margin-bottom:0;padding:.5rem;}
+  .searchMainBox .formBox1 .tripBox .group label{padding-bottom:.5rem;}
+  .searchMainBox .formBox1 .tripBox .group.small{max-width: unset;flex:1 1 150px;}
+}
+  
+input[type='date']::-webkit-calendar-picker-indicator{background-color: lightblue;padding:.5rem;margin:-.5rem;border-radius: .2rem;}

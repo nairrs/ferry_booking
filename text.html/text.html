@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <div class="box"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<style>
-    .box{max-width:300px;border:1px solid green;display: flex;flex-wrap: wrap;gap:1rem;justify-content: center;transform: skewX(-10deg);}
-    .box i{width:50px;height:50px;border:1px solid rgb(43, 0, 128);transform:skewX(10deg);}
-</style>
+    <table class="table table-striped text-center" style="font-size: 13px;">
+        <thead>
+            <tr>
+                <th>Departure</th>
+                <th>Availability</th><!---->
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="selected-trip">
+                <td> Nautika Lite<br> 06:30 </td>
+                <td> Royal (4)<br><span class="base-fare">(₹1,100.00)</span>
+                    <hr class="mt-1 mb-1"> Luxury (24)<br><span class="base-fare">(₹900.00)</span>
+                </td><!---->
+                <td><button class="btn btn-primary">Seating</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <style>
+        .box {
+            max-width: 300px;
+            border: 1px solid green;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            transform: skewX(-10deg);
+        }
+
+        .box i {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgb(43, 0, 128);
+            transform: skewX(10deg);
+        }
+    </style>
 </body>
+
 </html>

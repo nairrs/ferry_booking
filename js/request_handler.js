@@ -1,13 +1,15 @@
+let serverURL = '';
 // let serverURL = 'https://nairrs.com/ferry/';
-let serverURL = 'http://localhost/ferry_booking/';
+// let serverURL = 'http://localhost/ferry_booking/';
 
 
 function getTripData() {
-
+ 
+  let tripBox = document.querySelector('.tripBox');
   var userRouteInput = {
-    "date": document.querySelector('.tripBox .tDate').value,
-    "from": document.querySelector('.tripBox .tFrom').value,
-    "to": document.querySelector('.tripBox .tTo').value,
+    "date": tripBox.querySelector('input[name="date"]').value,
+    "from": tripBox.querySelector('select[name="from"]').value,
+    "to": tripBox.querySelector('select[name="to"]').value,
     "userName": "Andamanbooking",
     "token": "U2e5gctrduG34vXa8UExu0KkOwutgfKr62uIyv3ZgU="
   };
@@ -46,20 +48,32 @@ function demoGetTripData() {
 }
 
 var ferrDetails = [
-  { ID: '1', name: 'Nutika', img: 'nautika.png', clickFun: "seatSelectionPage(event, 'v1')" },
-  { ID: '2', name: 'Nutika Lite', img: 'nautika-lite.png', clickFun: "seatSelectionPage(event, 'v2')" },
-  { ID: '3', name: 'Makruzz', img: 'makruzz.jpg', clickFun: "passengerDetails()" }
+  {ID:'2',name:'Nutika',img:'nautika.png',clickFun:"seatSelectionPage(event,'v1')"},
+  {ID:'1',name:'NutikaLite',img:'nautika-lite.png',clickFun:"seatSelectionPage(event,'v2')"},
+  {ID:'3',name:'Makruzz',img:'makruzz.jpg',clickFun:"passengerDetails()"}
 ]
 
 function createResultCards(data) {
-  console.log(data)
+
+
+// Sorting the "data" array based on the "dTime" field
+data.data.sort((a, b) => {
+    // Convert "dTime" to total minutes for comparison
+    let timeA = a.dTime.hour * 60 + a.dTime.minute;
+    let timeB = b.dTime.hour * 60 + b.dTime.minute;
+
+    return timeA - timeB;
+});
+
+// Displaying the sorted data
+// console.log(JSON.stringify(data, null, 2));
+//   console.log(data)
 
   // ferry data
   let vessel = [], bClass = '', pClass = '', ferrys = data.data;
   sessionStorage.setItem('nautTripData', JSON.stringify(ferrys));
   let ferryResultCards = document.querySelector('.ferryResultCards');
   ferryResultCards.innerHTML = '';
-  console.log(ferrys)
 
   ferrys.forEach(ferry => {
     ferrDetails.forEach(ferryDetail => {
@@ -70,7 +84,7 @@ function createResultCards(data) {
     // components
     function createClassCard(availableSeats, classTtl, bFare) {
       let seatClassBody = `
-        <div class="seatClass">
+        <div class="${classTtl} seatClass " onclick>
         <div class="className">
             ${classTtl}
         </div>
@@ -105,7 +119,7 @@ function createResultCards(data) {
 
     // seat class avilable
     if (ferry.pClass) {
-      let classTtl = 'Royal';
+      let classTtl = 'royal';
       let availableSeats = 0;
       for (var seat in ferry.pClass) {
         if (ferry.pClass[seat].isBooked === 0) {
@@ -116,7 +130,7 @@ function createResultCards(data) {
       pClass = createClassCard(availableSeats, classTtl, bFare);
     }
     if (ferry.bClass) {
-      let classTtl = 'Luxury';
+      let classTtl = 'luxury';
       let availableSeats = 0;
       for (var seat in ferry.bClass) {
         if (ferry.bClass[seat].isBooked === 0) {
@@ -137,7 +151,12 @@ function createResultCards(data) {
           </div>
           <p class="ferryName">${vessel.name}</p>
           <div class="includesIcons">
-              <i>0</i><i>0</i><i>0</i><i>0</i><i>0</i><i>0</i>
+            <i class="fa-solid fa-snowflake"></i>
+            <i class="fa-solid fa-mug-hot"></i>
+            <i class="fa-solid fa-utensils"></i>
+            <i class="fa-solid fa-tv"></i>
+            <i class="fa-solid fa-martini-glass"></i>
+            <i class="fa-solid fa-kit-medical"></i>
           </div>
       </div>
       <div class="shedule-class">
@@ -158,9 +177,9 @@ function createResultCards(data) {
             ${pClass}
             ${bClass}
           </div>
-          <div class="classDesc">
+          <div class="classDesc dnone">
               <p class="class">
-                  <span class="name">Premium :</span>
+                  <span class="name">luxury :</span>
                   <span class="desc">Located on the lower deck offers front and side sea views.</span>
               </p>
           </div>
@@ -168,7 +187,7 @@ function createResultCards(data) {
       <div class="bookBtns">
           <div class="btns">
             <input type="hidden" value="${tripId}" >
-              <button class="btn" onclick="${vessel.clickFun}" data-ferryId="${ferryId}" data-tripId="${tripId}" data-vesselId="${vesselId}">Select & Proceed</button>
+              <button class="btn" onclick="${vessel.clickFun}" data-ferryId="${ferryId}" data-tripId="${tripId}" data-vesselId="${vesselId}">Book Now</button>
           </div>
       </div>
   </div>
@@ -196,12 +215,10 @@ function seatSelectionPage(event, v) {
       varFerryId = selectedBtn.getAttribute('data-ferryId');
       varTripId = selectedBtn.getAttribute('data-tripId');
       varVesselId = selectedBtn.getAttribute('data-vesselId');
-      console.log(varFerryId)
-      console.log(varTripId)
-      console.log(varVesselId)
       seatNoAllot(varTripId);
     })
     .catch(error => console.log('error', error));
+
 }
 
 function bookSeats() {
@@ -295,10 +312,10 @@ function handleBookingResponse(response) {
   console.log(response);
 }
 
-// Call the function when the form is submitted
+// function when the form is submitted
 document.querySelector('.formBox1 form').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevent the default form submission
-  bookSeats(); // Call the bookSeats function to send the booking request
+  bookSeats(); //bookSeats function to send the booking request
 });
 
 function sendToDummyPage(userBookingInput){
@@ -309,3 +326,4 @@ function sendToDummyPage(userBookingInput){
 }
 
 // delete after work
+// demoGetTripData();
