@@ -11,12 +11,13 @@
 .btns .btn{border-radius:25px;max-width:200px;}
 .btns .btn.icon{height:40px;width:40px;line-height: 50%;}
 .formBox1 *:focus{outline: none;}
+.formBox1 input[type='date']::-webkit-calendar-picker-indicator{background-color: lightblue;padding:.5rem;margin:-.5rem;border-radius: .2rem;}
 
 /* body */
 body{max-width:100vw;}
-body.ferryPages{background:rgb(224, 229, 234);}
+.ferryPages{background:rgb(224, 229, 234);}
 
-.ferryPages .mainBox{background:#fff;width:100%;max-width:var(--pageWidth);margin:1rem auto;}
+.ferryPages .mainBox{background:#f0f8ff;width:100%;max-width:var(--pageWidth);margin:1rem auto;}
 .ferryPages .mainBox>.inner{max-width: 100%;}
 .ferryPages .mainBox.onlyTtlMainBox{background:transparent;text-align: center;}
 .ferryPages .mainBox.onlyTtlMainBox .ttl{font-size: 2rem;}
@@ -30,8 +31,9 @@ body.ferryPages{background:rgb(224, 229, 234);}
 
 /* ferry result cards */
 .ferryResultTable{display: flex;justify-content: center;}
-.ferryResultTable table{border-collapse: collapse;text-align: center;font-size:18px;}
 .ferryResultTable th, .ferryResultTable td{padding:.5rem;}
+.ferryResultTable table{border-collapse: collapse;text-align: center;font-size:18px;}
+.ferryResultTable table span{font-size:.8rem;color:#222;}
 .ferryResultTable tbody tr:nth-child(odd){background:aliceblue;}
 .ferryResultTable .btns .btn{padding:.4rem .5rem;background: linear-gradient(30deg,var(--colPri),rgb(0, 30, 128));box-shadow:.1rem .1rem .1rem rgba(0,0,0,.4);transition: .1s;border-radius:.5rem;font-size: 18px;font-weight: normal;}
 .ferryResultTable .btns .btn:hover{color:#fff !important;transform:translate(.1rem,.1rem);box-shadow:.1rem .1rem .1rem rgba(0,0,0,.5);}

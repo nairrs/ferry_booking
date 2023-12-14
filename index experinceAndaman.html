@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferry</title>
     <link rel="stylesheet" href="css/util.css">
-    <link rel="stylesheet" href="css/main2.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/mob.css">
 
     <!-- fontawsome -->
@@ -26,7 +26,7 @@
     <div class="mainBox searchMainBox ">
         <div class="inner">
             <div class="mainBoxBody">
-                <div class="formBox1 dnone">
+                <div class="formBox1">
                     <div class="onlyLabel">
                         <div class="group ">
                             <label for="">Date</label>
@@ -85,43 +85,6 @@
                         <button class="btn" type="submit" onclick="demoGetTripData()">Search</button>
                     </div>
                 </div>
-                <div class="formBox1 mobScreen">
-                    <div class="tripBox">
-                        <div class="trip">
-                            <div class="group small">
-                                <label for="">From</label>
-                                <select name="from" id="" onchange="sectorSelection(this)">
-                                    <option value="Port Blair">Port Blair</option>
-                                    <option value="Swaraj Dweep" >Havelock Island</option>
-                                    <option value="Shaheed Dweep">Neil Island</option>
-                                </select>
-                            </div>
-                            <div class="group toSelect small">
-                                <label for="">To</label>
-                                <select name="to" id="">
-                                    <option value="Port Blair" disabled>Port Blair</option>
-                                    <option value="Swaraj Dweep" >Havelock Island</option>
-                                    <option value="Shaheed Dweep">Neil Island</option>
-                                </select>
-                            </div>
-                            <div class="group ">
-                                <label for="">Date</label>
-                                <input type="date" name="date" required>
-                            </div>
-                            <div class="group small">
-                                <label for="">Adult</label>
-                                <input type="number" name="adult" value="1" min="1" required>
-                            </div>
-                            <div class="group small">
-                                <label for="">Infant</label>
-                                <input type="number" name="infant">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btns mt-2 mb-2">
-                        <button class="btn" type="submit" onclick="demoGetTripData()">Search</button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -131,37 +94,7 @@
                 <div class="btns mb-2">
                     <div class="btn" onclick="replan()">Replan</div>
                 </div>
-                <div class="ferryResultTable">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Sno</th>
-                                <th>Vessel</th>
-                                <th>From</th>
-                                <th>To</th>
-                                <th>Depature</th>
-                                <th>Luxury class<br>(Seat avilable)</th>
-                                <th>Royal class<br>(Seat avilable)</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Nautika</td>
-                                <td>Port Blair</td>
-                                <td>Havelock</td>
-                                <td>06:30</td>
-                                <td>24<br>(Fare - ₹900.00)</td>
-                                <td>24<br>(Fare - ₹900.00)</td>
-                                <td>
-                                    <div class="btns">
-                                        <div class="btn">Show seating</div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="ferryResultCards">
                 </div>
             </div>
         </div>
@@ -264,7 +197,7 @@
     </div>
 
     <script src="js/main.js"></script>
-    <script src="js/request_handler2.js"></script>
+    <script src="js/request_handler.js"></script>
 
 </body>
 </html>

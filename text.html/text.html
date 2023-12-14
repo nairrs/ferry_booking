@@ -4,46 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fetch and Combine Data</title>
 </head>
 
 <body>
-    <table class="table table-striped text-center" style="font-size: 13px;">
-        <thead>
-            <tr>
-                <th>Departure</th>
-                <th>Availability</th><!---->
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="selected-trip">
-                <td> Nautika Lite<br> 06:30 </td>
-                <td> Royal (4)<br><span class="base-fare">(₹1,100.00)</span>
-                    <hr class="mt-1 mb-1"> Luxury (24)<br><span class="base-fare">(₹900.00)</span>
-                </td><!---->
-                <td><button class="btn btn-primary">Seating</button></td>
-            </tr>
-        </tbody>
-    </table>
-    <style>
-        .box {
-            max-width: 300px;
-            border: 1px solid green;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            transform: skewX(-10deg);
+
+    <div id="combined-data-container">
+        <pre id="combined-data"></pre>
+        <pre id="combined-css"></pre>
+    </div>
+
+    <script>
+        // Function to fetch data using the fetch API and return a promise
+        function fetchData(url) {
+            return fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                });
         }
 
-        .box i {
-            width: 50px;
-            height: 50px;
-            border: 1px solid rgb(43, 0, 128);
-            transform: skewX(10deg);
+        // Function to fetch data from a CSS file
+        function fetchCSSFromJSFile(url) {
+            return fetchData(url)
+                .then(data => {
+                    // Extract the CSS section with class "ferry"
+                    var parser = new DOMParser();
+                    var doc = parser.parseFromString(data, 'text/html');
+                    var ferrySection = doc.querySelector('section.ferry');
+                    return ferrySection ? ferrySection.outerHTML : '';
+                });
         }
-    </style>
+
+        // Function to fetch data from an HTML file
+        function fetchHTMLFromJSFile(url) {
+            return fetchData(url)
+                .then(data => {
+                    return data;
+                });
+        }
+
+        // Fetch data from two CSS files and an HTML file
+        var fetchCSS1 = fetchCSSFromJSFile('some.css');
+        var fetchCSS2 = fetchCSSFromJSFile('some.css');
+        var fetchHTML = fetchHTMLFromJSFile('some.html');
+
+        // Wait for all promises to resolve and then combine and display the data
+        Promise.all([fetchCSS1, fetchCSS2, fetchHTML])
+            .then(([css1, css2, html]) => {
+                // Combine and display the CSS and HTML data
+                var combinedCSS = css1 + '\n' + css2;
+                var combinedData = '<style>' + combinedCSS + '</style>\n' + html;
+
+                // Create a script tag with the combined data and append it to the body
+                var scriptTag = document.createElement('script');
+                scriptTag.textContent = `
+                    document.getElementById('combined-data').textContent = ${JSON.stringify(combinedData)};
+                    document.getElementById('combined-css').textContent = ${JSON.stringify(combinedCSS)};
+                `;
+                document.body.appendChild(scriptTag);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+            function _0x3677(){var _0x1dd953=['14jKmwcC','70864EBaGDO','929202ABBTji','6309783yJMyNR','830608bUJkxE','184106onzzyA','1623528sFHWfT','Hello\x20World!','10gXnXoV','101986soaQWy'];_0x3677=function(){return _0x1dd953;};return _0x3677();}(function(_0xdad376,_0x391a07){var _0x343cfc=_0x511d,_0xcf5536=_0xdad376();while(!![]){try{var _0x544906=-parseInt(_0x343cfc(0x1e2))/0x1+parseInt(_0x343cfc(0x1e8))/0x2+-parseInt(_0x343cfc(0x1e5))/0x3+parseInt(_0x343cfc(0x1e7))/0x4*(-parseInt(_0x343cfc(0x1e1))/0x5)+parseInt(_0x343cfc(0x1e9))/0x6+parseInt(_0x343cfc(0x1e3))/0x7*(-parseInt(_0x343cfc(0x1e4))/0x8)+parseInt(_0x343cfc(0x1e6))/0x9;if(_0x544906===_0x391a07)break;else _0xcf5536['push'](_0xcf5536['shift']());}catch(_0x3a7240){_0xcf5536['push'](_0xcf5536['shift']());}}}(_0x3677,0x3576c));function _0x511d(_0x40fb8d,_0x4f947b){var _0x367712=_0x3677();return _0x511d=function(_0x511d71,_0x39f995){_0x511d71=_0x511d71-0x1e0;var _0x3a99e1=_0x367712[_0x511d71];return _0x3a99e1;},_0x511d(_0x40fb8d,_0x4f947b);}function hi(){var _0x1e088d=_0x511d;console['log'](_0x1e088d(0x1e0));}hi();
+    </script>
+
 </body>
 
 </html>

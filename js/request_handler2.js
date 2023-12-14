@@ -28,6 +28,27 @@ function getTripData() {
     .catch(error => console.log('error', error));
 }
 
+// function getTripData() {
+//   let tripBox = document.querySelector('.tripBox');
+//   let userRouteInput = {
+//     "date": tripBox.querySelector('input[name="date"]').value,
+//     "from": tripBox.querySelector('select[name="from"]').value,
+//     "to": tripBox.querySelector('select[name="to"]').value,
+//     "userName": "Andamanbooking",
+//     "token": "U2e5gctrduG34vXa8UExu0KkOwutgfKr62uIyv3ZgU="
+//   };
+
+// 	postTripData(20-12-2023, 'Swaraj Dweep', 'Port Blair')
+// 	.then(result => {
+// 		console.log('Result:', result);
+// 		// Handle the result as needed
+// 	})
+// 	.catch(error => {
+// 		console.error('Error:', error);
+// 		// Handle errors
+// 	});
+// }
+
 function demoGetTripData() {
   fetch(`${serverURL}js/data-ferry2.json`)
     .then(response => {
@@ -179,8 +200,8 @@ function createResultCards(data) {
           <td>${ferry.from}</td>
           <td>${ferry.to}</td>
           <td>${dTime}</td>
-          <td>${bClassSeatAvailable}<br>(Fare - ₹${bClassFare}.00)</td>
-          <td>${pClassSeatAvailable}<br>(Fare - ₹${pClassFare}.00)</td>
+          <td>${bClassSeatAvailable}<br><span>(Fare - ₹${bClassFare}.00)</span></td>
+          <td>${pClassSeatAvailable}<br><span>(Fare - ₹${bClassFare}.00)</span></td>
           <td>
             <div class="btns">
               <input type="hidden" value="${tripId}" >

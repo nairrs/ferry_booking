@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferry</title>
+    <link rel="stylesheet" href="css/util.css">
+    <link rel="stylesheet" href="css/main2.css">
+    <link rel="stylesheet" href="css/mob.css">
+
+    <!-- fontawsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body >
+
+<section class="ferryPages">
+<!-- utils -->
+<style>
+/* i::after{content: '#';} */
+
+:root{
+
+/* box */
+--box-shadow-sml-light:5px 5px 5px lightgray;
+
+/* color */
+--hue-color: 250;
+--colPri: #0866ff;
+--colPriDark: hsl(var(--hue-color), 57%, 53%);
+--colPriLight: hsl(var(--hue-color), 92%, 85%);
+--titlecol: hsl(var(--hue-color), 37%, 33%);
+--colText:#050505;
+--colGray:#65676b;
+--colLight:#ddd;
+--inputcol: hsl(var(--hue-color), 70%, 96%);
+--bodyBgCol: hsl(var(--hue-color), 60%, 99%);
+--fontfamily: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+--bgblurpx:5px;
+--pageWidth:1100px;
+--fontSizeHtml:120%;
+--fontSizeTtl:3rem;
+--fontSizeSubTtl:1.3rem;
+
+}
+
+
+/* basic */
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:var(--fontSizeHtml);}
+body{width:100%;min-height:95vh;background:var(--bodyBgCol);color:var(--colText);font-family:var(--fontfamily);overflow-x: hidden;}
+
+body.nightmode{
+--colText: hsl(var(--hue-color), 8%, 85%);
+--colLight: hsl(var(--hue-color), 53%, 91%);
+--bodycol: hsl(var(--hue-color), 10%, 9%);
+}
+
+
+a{text-decoration: none;display: inline-block;cursor: pointer;}
+h1,h2,h3{color:var(--titlecol);font-weight:bold;margin:1rem 0;}
+h1{font-size:2rem;}h2{font-size:1.5rem;}h3{font-size:1.1rem;}
+h1+.titledesc,h2+.titledesc,h3+.titledesc{margin:-.9rem 0 1rem;}
+ul{list-style:none;}
+
+
+article{text-align: justify;line-height:calc(var(--textsize) + 20);}
+/* article .plantext{} */
+
+/* bg */
+.bgblur{
+-webkit-backdrop-filter: blur(var(--bgblurpx));
+backdrop-filter: blur(var(--bgblurpx));
+background: rgba(255,255,255,.5);
+}
+
+/* box shadow */
+.boxShadow{box-shadow:.5rem .5rem .5rem rgba(0,0,0,.3);}
+
+/* btn */
+.btns{display: flex;flex-wrap: wrap;gap:1rem;justify-content: space-evenly;}
+.btns > .btn{flex:1 1 100px;display: inline-block;padding:12px;background-color: var(--colPri);color: #fff;border-radius:.2rem;cursor: pointer;border:1px solid rgba(0,0,0,.2);text-align: center;font-size: 1rem;font-weight: bold;text-decoration: none;}
+.btns .btn:hover, .btns .btn:hover{background-color:transparent !important;color:var(--colPri) !important;}
+.btns .btn.sml{padding:.1rem .3rem;}
+.btns .btn.danger{background-color:rgb(251, 52, 52);}
+
+/* btn 3d */
+.btn3d{box-shadow:3px 3px 3px rgba(0,0,0,0.7);}
+.btn3d:hover{box-shadow:0 0  rgba(0,0,0,0.7);transform: translate(2px, 2px);}
+
+/* cards */
+
+.cards1{display:flex;flex-wrap: wrap;justify-content:center;gap:1rem;}
+.cards1 .card{flex:1 1 calc(300px - 1rem /* gap */);}
+
+.cardservice{display: flex;}
+.cardservice .card{flex:1 1 290px;max-width:350px;display: flex;flex-direction:column;align-items: center;background:#fff;margin:1rem;text-align: justify;padding:2rem;border-radius:1rem;font-size:1.3rem;font-weight: bold;border:none;box-shadow:0px 0px rgba(0,0,0,0);margin-top:5rem;}
+.cardservice .card img{width:200px;height:200px;padding:1rem;border-radius:3rem;transform: translateY(-6rem);margin-bottom:-5rem;background: var(--colPri);}
+.cardservice .card .ttl{font-size:1.7rem;font-weight: bold;margin-bottom:1rem;color:var(--colPri);}
+
+/* color */
+.bg-#fff, .bg-white{background: #fff;}
+.c-danger{color: red;}
+.c-success{color: green;}
+.facebookcolor{color:#3b5998;}
+.instagramcolor{background-image:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);box-shadow: 0px 3px 10px rgba(0,0,0,.25);background-size: 100%; -webkit-background-clip: text; -moz-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent; -moz-text-fill-color: transparent;}
+.instagramcolorbg{background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);box-shadow: 0px 3px 10px rgba(0,0,0,.25);}
+.linkedincolor{color:  #0077b5;}
+.twittercolor{color:  #00acee;}
+.whatsappcolor{color: #25D365;}
+.ytcolor{color:#FF0000}
+.c-skyblue{color:skyblue;}
+.bg-primary{background-color:rgb(13, 110, 253);color:#fff;}.bg-primary:hover{background-color:rgb(0, 100, 250);color:#fff;}.bg-secondary{background-color: rgb(108, 117, 125);color:#fff;}.bg-secondary:hover{background-color: rgb(98, 107, 114);color:#fff;}.bg-success{background-color: rgb(25, 135, 84);color:#fff;}.bg-success:hover{background-color: rgb(20, 119, 73);color:#fff;}.bg-danger{background-color: rgb(220, 53, 69);color:#fff;}.bg-danger:hover{background-color: rgb(202, 39, 56);color:#fff;}.bg-warn{background-color: rgb(255, 193, 7);color:rgb(33, 37, 41);}.bg-warn:hover{background-color: rgb(243, 182, 0);color:rgb(33, 37, 41);}.bg-info{background-color: rgb(13, 202, 240);color:rgb(33, 37, 41);}.bg-info:hover{background-color: rgb(0, 193, 231);color:rgb(33, 37, 41);}.bg-light{background-color: rgb(248, 249, 250);color:rgb(33, 37, 41);}.bg-light:hover{background-color: rgb(231, 232, 233);color:rgb(33, 37, 41);}.bg-dark{background-color: rgb(33, 37, 41);color:#fff;}.bg-dark:hover{background-color: rgb(14, 16, 17);color:#fff;}
+
+/* display */
+.d-none, .dnone{display: none !important;}
+.d-flex, .dflex{display: flex;}
+
+/* display-properties */
+.a-i-center{align-items: center;}
+.f-d-column{flex-direction: column;}
+.f-w-wrap{flex-wrap: wrap;}
+.j-c-between{justify-content:space-between;}
+.j-c-center{justify-content:center;}
+.j-c-evenly{justify-content:space-evenly;}
+
+
+/* flex */
+.flex-wrap{flex-wrap: wrap;}
+
+
+
+/* form */
+
+.formBox1 form{display: flex;flex-wrap: wrap;gap:2rem;margin:1rem 0;}
+.formBox1 form .group{flex:1 1 calc(50% - 2rem /* gap */);min-width:200px}
+.formBox1 form .group.block, .formBox1 form .btns{flex:1 1 calc(100%);}
+.formBox1 input, .formBox1 select, .formBox1 textarea{border:1px solid transparent;padding:1rem;width:100%;resize: none;}
+.formBox1 form .btns{display: flex;justify-content: space-between;flex-wrap: wrap;}
+.formBox1 label{text-transform: uppercase;font-size:1rem;padding-bottom:1rem;display: block;}
+.formBox1 *::placeholder{font-size:1rem;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+.formBox1 form .btns{gap:1rem;}
+.formBox1 form .btns .btn{border:1px solid var(--colPri);background:var(--colPri);color:#fff;}
+.formBox1 form .btns .btn:hover{background:#fff;color:var(--colPri);}
+
+/* form theme */
+.formBox1.themeform input{background:#111;color:#fff;}
+.formBox1.themeform input::placeholder{color:#ddd;}
+
+
+/* form single line */
+.formBox1.singlelineform form{justify-content: center;flex-wrap: wrap;}
+.formBox1.singlelineform .group, .formBox1.singlelineform .btns{flex:1 1 200px;max-width:300px;}
+
+
+
+/* hr line */
+.hrline{width:95%;background:linear-gradient(90deg, var(--colPri), transparent, var(--colPri));height:5px;margin: 1rem auto;border-radius:50%;}
+
+/* location viewer */
+.LV>*{background-color:rgba(255, 0, 0, .2);}
+.LV>*>*{background-color:rgba(0, 225, 255, .3);}
+.LV>*>*>*{background-color:rgba(51, 0, 255, .3);}
+.LV>*>*>*>*{background-color:rgba(14, 172, 0, .3);}
+.LV>*>*>*>*>*{background-color:rgba(239, 0, 0, .3);}
+.LV>*>*>*>*>*>*{background-color:rgba(0, 255, 21, 0.3);}
+.LV>*>*>*>*>*>*>*{background-color:rgba(251, 255, 29, 0.4);}
+.LV>*>*>*>*>*>*>*>*{background-color:rgba(255, 0, 221, 0.3);}
+
+/* margin padding */
+.mb-2{margin-bottom:2rem;}
+.mt-2{margin-top:2rem;}
+.mt-4{margin-top:4rem;}
+
+/* margin padding */
+.pb-2{margin-bottom:2rem;}
+.pt-2{margin-top:2rem;}
+.pt-4{margin-top:4rem;}
+
+/* table */
+.table1{border-collapse: collapse;margin: 1rem;}
+.table1 *{border: 1px solid lightgray;padding:9px 15px;text-align: center;font-size: .8rem;}
+.table1 thead th{background-color: var(--col-thead);background-color: #ccc;}
+
+/* section */
+.mainBox{padding:2rem 1rem;}
+.mainBox>.inner{width:max(100%, var(--pageWidth));margin:auto;}
+.singlemainBoxpage{min-height:80vh;display: flex;justify-content: center;align-items: center;flex-direction: column;}
+.mainBoxTtl .ttl{font-weight:bold;font-size:var(--fontSizeTtl);margin-bottom:2.5rem;color:var(--colPri);}
+.mainBoxTtl .desc{margin:-2rem 0 3rem;font-size:calc(var(--fontSizeTtl) / 2);}
+
+
+
+
+
+/* extra */
+.licon, .l-icon{background:linear-gradient(blue,pink);padding:.6rem 1rem;border-radius:50%;color:#fff;}
+.t-a-center{text-align: center;}
+.centered{text-align: center;align-items: center;justify-content: center;}
+.h-line{height:2px;width: 90%;background-color: #ccc;border-radius: 1rem;margin: 1rem auto;}
+.disable{pointer-events: none;opacity:.8;}
+.alllink{color:var(--colPri);font-weight: bold;}.alllink:hover{color:var(--colPriDark);}
+.alllinks a{color:var(--colPri);font-weight: bold;}.alllinks a:hover{color:var(--colPriDark);}
+.readarea{margin:1rem auto;padding:1rem;border:1px solid aliceblue;background:#fff;border-radius:1rem;}
+
+/* basic website */
+
+/* combo */
+header .hdrTop>.inner, header .hdrBot>.inner{width:min(100%, var(--pageWidth));margin:auto;}
+
+/* header */
+header .hdrTop>.inner{display: flex;justify-content: space-between;align-items:center;}
+header .brand{font-size:2rem;font-weight:bold;}
+
+/* footer */
+footer{background:#ccc;}
+footer .ftrTop>.inner, footer .ftrBot>.inner{width:min(100%, var(--pageWidth));margin:auto;}
+footer .ftrTop>.inner{display: flex;flex-wrap: wrap;gap:1rem;justify-content: space-evenly;padding-block:4rem;}
+footer .ftrBox{flex:1 1 300px;}
+footer .ftrBoxTtl{font-size:var(--fontSizeSubTtl);margin-bottom:1rem;}
+footer .ftrBoxBody{display: flex;flex-direction: column;}
+footer .ftrBot>.inner{padding-block:1rem;border-top:1px solid #00000041;}
+
+
+@media screen and (max-width:768px) {
+    
+}
+@media screen and (max-width:700px){
+    .mainBox{padding:4rem 5px;}
+}
+@media screen and (max-width:576px) {
+
+}
+
+/* 
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css); 
+
+*/
+</style>
+
+<!-- main -->
+<style>
+    
+:root{
+    --pageWidth:1000px;
+}
+
+/* global */
+.formBox1 input, .formBox1 select{border-radius:.5rem;}
+.formBox1 .trip{display: flex;flex-wrap: wrap;gap: 1rem;align-items: center;}
+.formBox1 .group.small{max-width:100px;}
+.formBox1 form .btns{width: 100%;display:flex;justify-content: center;}
+.btns .btn{border-radius:25px;max-width:200px;}
+.btns .btn.icon{height:40px;width:40px;line-height: 50%;}
+.formBox1 *:focus{outline: none;}
+.formBox1 input[type='date']::-webkit-calendar-picker-indicator{background-color: lightblue;padding:.5rem;margin:-.5rem;border-radius: .2rem;}
+
+/* body */
+body{max-width:100vw;}
+.ferryPages{background:rgb(224, 229, 234);}
+
+.ferryPages .mainBox{background:#f0f8ff;width:100%;max-width:var(--pageWidth);margin:1rem auto;}
+.ferryPages .mainBox>.inner{max-width: 100%;}
+.ferryPages .mainBox.onlyTtlMainBox{background:transparent;text-align: center;}
+.ferryPages .mainBox.onlyTtlMainBox .ttl{font-size: 2rem;}
+.ferryPages .mainBox.onlyTtlMainBox .desc{font-size:1rem;}
+
+/* ferry serch form */
+.searchMainBox .formBox1 .onlyLabel{width:100%;display: flex;gap:1rem;}
+.searchMainBox .formBox1 .onlyLabel .btns{width:40px;}
+.searchMainBox .formBox1 .group{flex:1 1 200px;}
+.searchMainBox .formBox1 .tripBox .group{border:1px solid lightblue;border-radius: .2rem;overflow: hidden;margin-bottom:1rem;}
+
+/* ferry result cards */
+.ferryResultTable{display: flex;justify-content: center;}
+.ferryResultTable th, .ferryResultTable td{padding:.5rem;}
+.ferryResultTable table{border-collapse: collapse;text-align: center;font-size:18px;}
+.ferryResultTable table span{font-size:.8rem;color:#222;}
+.ferryResultTable tbody tr:nth-child(odd){background:aliceblue;}
+.ferryResultTable .btns .btn{padding:.4rem .5rem;background: linear-gradient(30deg,var(--colPri),rgb(0, 30, 128));box-shadow:.1rem .1rem .1rem rgba(0,0,0,.4);transition: .1s;border-radius:.5rem;font-size: 18px;font-weight: normal;}
+.ferryResultTable .btns .btn:hover{color:#fff !important;transform:translate(.1rem,.1rem);box-shadow:.1rem .1rem .1rem rgba(0,0,0,.5);}
+
+/* ferryStructure */
+.ferryStructure .inner{display:flex;justify-content: center;flex-wrap: wrap;gap:1rem;}
+.ferryStructure .structureBox{width:400px;position: relative;isolation: isolate;}
+.ferryStructure .structureBox img{width:100%;z-index:-2;}
+.ferryStructure .seat{height:25px;width:25px;border:1px solid #aaa;display: grid;place-items: center;font-size:12px;text-transform: uppercase;cursor: pointer;background:#fff;}
+.ferryStructure .seat.booked{background:#ccc;cursor: not-allowed;}
+.ferryStructure .seat.selected{background: green;}
+.ferryStructure .seatBox .seats{display:flex;flex-wrap: wrap;gap:5px;}
+.vessel1 .v1-royal .seatBox{position: absolute;top:48%;left:26%;height:180px;width:190px;display: flex;gap:1rem;justify-content: space-between;}
+.vessel1 .v1-royal .seatBox .seats{width:45%;}
+.vessel1 .v1-royal .seatBox .seats.left{height:135px;}
+.vessel1 .v1-royal .seatBox .seats.right{margin-top:1rem;height:150px;}
+.vessel1 .v1-luxury .seatBox1{position: absolute;top:24%;left:10%;height:280px;width:315px;display: flex;justify-content:center;align-items: center;transform-origin: center;gap:1rem;}
+.vessel1 .v1-luxury .seatBox1 .seats{width:30%;justify-content: center;}
+.vessel1 .v1-luxury .seatBox1 .seats.left{transform: skewX(-5deg);}
+.vessel1 .v1-luxury .seatBox1 .seats.left .seat{transform: skewX(5deg)}
+.vessel1 .v1-luxury .seatBox1 .seats.center{width:35%;justify-content: center;height:240px;}
+.vessel1 .v1-luxury .seatBox1 .seats.center .subSeat1, .vessel1 .v1-luxury .seatBox1 .seats.center .subSeat2{display: flex;flex-wrap: wrap;gap:5px;}
+.vessel1 .v1-luxury .seatBox1 .seats.center .subSeat1{width: 85px;height: 115px;}
+.vessel1 .v1-luxury .seatBox1 .seats.center .subSeat2{height: 115px;}
+.vessel1 .v1-luxury .seatBox1 .seats.center .subSeat2 > .seat{flex:1 1 calc(25% - 5px);}
+.vessel1 .v1-luxury .seatBox1 .seats.right{transform: skewX(5deg)}
+.vessel1 .v1-luxury .seatBox1 .seats.right .seat{transform: skewX(-5deg)}
+.vessel1 .v1-luxury .seatBox2{position: absolute;top: 58%;left: 8%;height: 280px;width: 340px;display: flex;gap:1rem;justify-content: space-between;}
+.vessel1 .v1-luxury .seatBox2 .seats{width:30%;}
+.vessel1 .v1-luxury .seatBox2 .seats.center{width:39%;}
+
+.vessel2 .seatBox .seats{gap:0px;height: min-content;}
+.vessel2 .seatBox .seat{width:22px;height:28px;font-size:10px;}
+.vessel2 .v2-royal .seatBox{position: absolute;top: 45%;left:15%;height:355px;width:275px;display: grid;grid-template-columns:3fr 6fr 3fr;}
+.vessel2 .v2-royal .seatBox .seats{display: grid;gap:0px;max-height:330px;}
+.vessel2 .v2-royal .seatBox .seats.left{grid-template-columns: 1fr 1fr;padding-right: 33%;}
+.vessel2 .v2-royal .seatBox .seats.center{margin-top:6rem;grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;max-height:200px;}
+.vessel2 .v2-royal .seatBox .seats.right{display: flex;}
+.vessel2 .v2-royal .seatBox .seats.right .subSeat1{width:100%;display: grid;grid-template-columns: 1fr 1fr 1fr;}
+.vessel2 .v2-royal .seatBox .seats.right .subSeat2{display: grid;grid-template-columns: 1fr 1fr;padding-left:33%;}
+
+.vessel2 .v2-luxury .seatBox1{position: absolute;top:18%;left:12%;height:280px;width:305px;display: flex;justify-content:space-between;align-items: center;transform-origin: center;}
+.vessel2 .v2-luxury .seatBox1 .seats{width:67px;}
+.vessel2 .v2-luxury .seatBox1 .seats.center{justify-content: center;width:135px;}
+.vessel2 .v2-luxury .seatBox1 .subSeat1, .vessel2 .v2-luxury .seatBox1 .subSeat2{display: flex;flex-wrap: wrap;}
+.vessel2 .v2-luxury .seatBox1 .seats.center .subSeat2{justify-content: center;}
+
+.vessel2 .v2-luxury .seatBox2{position: absolute;top:44%;left:12%;width:305px;display: flex;justify-content:space-between;}
+.vessel2 .v2-luxury .seatBox2 .seats{width:67px;}
+.vessel2 .v2-luxury .seatBox2 .seats.center{justify-content: center;width:135px;margin-top: 3rem;}
+.vessel2 .v2-luxury .seatBox2 .subSeat1, .vessel2 .v2-luxury .seatBox2 .subSeat2{display: flex;flex-wrap: wrap;}
+.vessel2 .v2-luxury .seatBox2 .seats.center .subSeat2{justify-content: center;}
+
+/* user detail mainbox */
+.userDetailsMainBox .userDetails{padding:1rem;background:rgb(222, 240, 255);}
+.userContactDetails{max-width:700px;margin:0 auto 1rem;}
+.userContactDetails .ttl{text-align: center;font-size:1.5rem;font-weight:600;margin-bottom:1rem;}
+
+.userDetails form{justify-content: center;}
+.userDetails table{border-collapse: collapse;}
+.userDetails table input, .userDetails table select{padding:.7rem .5rem;}
+.userDetails table td{padding:.5rem .2rem;}
+.userDetails table thead th{padding-bottom:.5rem;}
+.userDetails table tbody tr{border-bottom:1px solid #fff;}
+
+</style>
+
+    <div class="mainBox onlyTtlMainBox ">
+        <div class="inner">
+            <div class="mainBoxTtl">
+                <div class="ttl">Ferry Booking</div>
+                <div class="desc">
+                    Book Ferry to Andaman Islands for Port Blair, Havelock and Neil Island.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mainBox searchMainBox ">
+        <div class="inner">
+            <div class="mainBoxBody">
+                <div class="formBox1">
+                <div class="onlyLabel">
+                    <div class="group ">
+                        <label for="">Date</label>
+                    </div>
+                    <div class="group">
+                        <label for="">From</label>
+                    </div>
+                    <div class="group">
+                        <label for="">To</label>
+                    </div>
+                    <div class="group small">
+                        <label for="">Adult</label>
+                    </div>
+                    <div class="group small">
+                        <label for="">Infant</label>
+                    </div>
+                    <div class="btns">
+                    </div>
+                </div>
+                <div class="tripBox" id="tripBox">
+                    <div class="trip">
+                        <div class="group">
+                            <!-- <label for="">From</label> -->
+                            <select name="from" id="" onchange="sectorSelection(this)">
+                                <option value="Port Blair">Port Blair</option>
+                                <option value="Swaraj Dweep" >Havelock Island</option>
+                                <option value="Shaheed Dweep">Neil Island</option>
+                            </select>
+                        </div>
+                        <div class="group toSelect">
+                            <!-- <label for="">To</label> -->
+                            <select name="to" id="">
+                                <option value="Port Blair" disabled>Port Blair</option>
+                                <option value="Swaraj Dweep" >Havelock Island</option>
+                                <option value="Shaheed Dweep">Neil Island</option>
+                            </select>
+                        </div>
+                        <div class="group ">
+                            <!-- <label for="">Date</label> -->
+                            <input type="date" name="date" required>
+                        </div>
+                        <div class="group small">
+                            <!-- <label for="">Adult</label> -->
+                            <input type="number" name="adult" value="1" min="1" required>
+                        </div>
+                        <div class="group small">
+                            <!-- <label for="">Infant</label> -->
+                            <input type="number" name="infant">
+                        </div>
+                        <div class="btns" style="opacity: 0;">
+                            <span class="btn icon tripsAddBtn" onclick="toggleTrip(this)" style="pointer-events:none;cursor:none;">+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="btns mt-2">
+                    <button class="btn" type="submit" id="getTripData">Search</button>
+                </div>
+            </div>
+    
+            </div>
+        </div>
+    </div>
+    <div class="mainBox resultMainBox dnone">
+        <div class="inner">
+            <div class="mainBoxBody">
+                <div class="btns mb-2">
+                    <div class="btn" onclick="replan()">Replan</div>
+                </div>
+                <div class="ferryResultTable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sno</th>
+                                <th>Vessel</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Depature</th>
+                                <th>Luxury class<br>(Seat avilable)</th>
+                                <th>Royal class<br>(Seat avilable)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Nautika</td>
+                                <td>Port Blair</td>
+                                <td>Havelock</td>
+                                <td>06:30</td>
+                                <td>24<br>(Fare - ₹900.00)</td>
+                                <td>24<br>(Fare - ₹900.00)</td>
+                                <td>
+                                    <div class="btns">
+                                        <div class="btn">Show seating</div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainBox seatSelectionMainBox dnone">
+        <div class="inner">
+            <div class="mainBoxBody">
+                <div class="btns mt-2 mb-2">
+                    <div class="btn" onclick="replan()">Replan</div>
+                </div>
+                <div class="ferryStructure">
+                </div>
+                <div class="btns mt-2">
+                    <div class="btn" onclick="passengerDetailsPage()">Passenger Details</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mainBox userDetailsMainBox dnone">
+        <div class="inner">
+            <div class="mainBoxBody">
+                <div class="btns mt-2 mb-2">
+                    <div class="btn" onclick="replan()">Replan</div>
+                </div>
+                <div class="userDetails">
+                    <div class="formBox1">
+                        <form action="">
+                            <div class="userContactDetails">
+                                <p class="ttl">Enter Passengers Details</p>
+                                <table>
+                                    <tr>
+                                        <td>Passenger<br>
+                                        GSTIN (optional)</td>
+                                        <td><input type="text" name="gst" placeholder="GSTIN (optional)" value="uyguguds"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td><input type="email" name="email" placeholder="Email" value="dummyemail@gmail.com"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone Number</td>
+                                        <td><input type="text" name="phone" placeholder="10 digit phone number" value="9988233145"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="userPersonalDetails">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Sno</th>
+                                            <th>Seat</th>
+                                            <th>Passenger Name</th>
+                                            <th>Gender</th>
+                                            <th>Age</th>
+                                            <th>Nationality</th>
+                                            <th>ID Number</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <!-- <td>
+                                                <select name="title" id="">
+                                                    <option value="MR">MR</option>
+                                                    <option value="MRS">MRS</option>
+                                                    <option value="Miss">Miss</option>
+                                                    <option value="Master">Master</option>
+                                                    <option value="DR">DR</option>
+                                                </select>
+                                            </td> -->
+                                            <td><input type="text" name="name" placeholder="Name"></td>
+                                            <td>
+                                                <select name="gender" id="">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Femail">Femail</option>
+                                                </select>
+                                            </td>
+                                            <td style="width:70px"><input type="number" name="age" placeholder="Age"></td>
+                                            <td>
+                                                <select name="nationality" id="" onchange="nationality(value)">
+                                                    <option value="India">India</option>
+                                                    <option value="China">China</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="btns">
+                                <button class="btn" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- main js -->
+<script>
+// important variables
+let varFerryId = '';
+let varTripId = '';
+let varVesselId = '';
+let varBClassSeats = [];
+let varPClassSeats = [];
+let varSeatClass = '';
+let varTotalSeatSelected = false;
+let varTotalSeat = 1;
+let totalClickedSeats = 0;
+
+// search format as per screen
+function searchFormateAsScreen() {
+  let opjopi = document.querySelector('.searchMainBox .mainBoxBody');
+  let windowWidth = window.innerWidth;
+  if (windowWidth > 950) {
+    opjopi.innerHTML = `
+    <div class="formBox1">
+    <div class="onlyLabel">
+        <div class="group ">
+            <label for="">Date</label>
+        </div>
+        <div class="group">
+            <label for="">From</label>
+        </div>
+        <div class="group">
+            <label for="">To</label>
+        </div>
+        <div class="group small">
+            <label for="">Adult</label>
+        </div>
+        <div class="group small">
+            <label for="">Infant</label>
+        </div>
+        <div class="btns">
+        </div>
+    </div>
+    <div class="tripBox" id="tripBox">
+        <div class="trip">
+            <div class="group">
+                <!-- <label for="">From</label> -->
+                <select name="from" id="" onchange="sectorSelection(this)">
+                    <option value="Port Blair">Port Blair</option>
+                    <option value="Swaraj Dweep" >Havelock Island</option>
+                    <option value="Shaheed Dweep">Neil Island</option>
+                </select>
+            </div>
+            <div class="group toSelect">
+                <!-- <label for="">To</label> -->
+                <select name="to" id="">
+                    <option value="Port Blair" disabled>Port Blair</option>
+                    <option value="Swaraj Dweep" >Havelock Island</option>
+                    <option value="Shaheed Dweep">Neil Island</option>
+                </select>
+            </div>
+            <div class="group ">
+                <!-- <label for="">Date</label> -->
+                <input type="date" name="date" required>
+            </div>
+            <div class="group small">
+                <!-- <label for="">Adult</label> -->
+                <input type="number" name="adult" value="1" min="1" required>
+            </div>
+            <div class="group small">
+                <!-- <label for="">Infant</label> -->
+                <input type="number" name="infant">
+            </div>
+            <div class="btns" style="opacity: 0;">
+                <span class="btn icon tripsAddBtn" onclick="toggleTrip(this)" style="pointer-events:none;cursor:none;">+</span>
+            </div>
+        </div>
+    </div>
+    <div class="btns mt-2">
+        <button class="btn" type="submit" onclick="getTripData()">Search</button>
+    </div>
+</div>
+      `;
+  } else {
+    opjopi.innerHTML = `
+    <div class="formBox1 mobScreen">
+    <div class="tripBox" id="tripBox">
+        <div class="trip">
+            <div class="group small">
+                <label for="">From</label>
+                <select name="from" id="" onchange="sectorSelection(this)">
+                    <option value="Port Blair">Port Blair</option>
+                    <option value="Swaraj Dweep" >Havelock Island</option>
+                    <option value="Shaheed Dweep">Neil Island</option>
+                </select>
+            </div>
+            <div class="group toSelect small">
+                <label for="">To</label>
+                <select name="to" id="">
+                    <option value="Port Blair" disabled>Port Blair</option>
+                    <option value="Swaraj Dweep" >Havelock Island</option>
+                    <option value="Shaheed Dweep">Neil Island</option>
+                </select>
+            </div>
+            <div class="group block">
+                <label for="">Date</label>
+                <input type="date" name="date" required>
+            </div>
+            <div class="group small">
+                <label for="">Adult</label>
+                <input type="number" name="adult" value="1" min="1" required>
+            </div>
+            <div class="group small">
+                <label for="">Infant</label>
+                <input type="number" name="infant">
+            </div>
+        </div>
+    </div>
+    <div class="btns mt-2">
+        <button class="btn" type="submit" onclick="getTripData()">Search</button>
+    </div>
+</div>
+    `;
+  }
+
+}; searchFormateAsScreen();
+window.addEventListener('resize', searchFormateAsScreen)
+
+
+// single multi trip toggle
+function toggleTrip(btn) {
+  let tripBox = document.querySelector(".tripBox");
+  let trips = tripBox.querySelectorAll(".trip");
+  codesandbox - cli
+  // If there is only one tripBox, add two more
+  if (trips.length === 1) {
+    let newTripBox1 = trips[0].cloneNode(true);
+    let newTripBox2 = trips[0].cloneNode(true);
+    tripBox.appendChild(newTripBox1);
+    tripBox.appendChild(newTripBox2);
+
+    btn.innerText = "^";
+
+    // Replace the button function with deleteTrip for the remaining tripBoxes
+    let trips2 = tripBox.querySelectorAll(".trip");
+    for (let i = 1; i < trips2.length; i++) {
+      let btn = trips2[i].querySelector(".tripsAddBtn");
+      btn.innerHTML = "X";
+      btn.setAttribute("onclick", "deleteTrip(this)");
+    }
+  } else {
+    // If there are more than one tripBoxes, remove all except the first one
+    for (let i = trips.length - 1; i > 0; i--) {
+      tripBox.removeChild(trips[i]);
+    }
+    btn.innerText = "v";
+  }
+}
+
+function deleteTrip(btn) {
+  let tripBox = document.querySelector(".tripBox");
+  let btnp = btn.parentElement;
+  let btnpp = btnp.parentElement;
+  tripBox.removeChild(btnpp);
+}
+
+function sectorSelection(selectElement) {
+  var selectedValue = selectElement.value;
+  var parent = selectElement.parentNode.parentNode;
+  var toSelect = parent.querySelector(".group.toSelect select");
+  let options = toSelect.options;
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].value === selectedValue) {
+      options[i].disabled = true;
+      options[i].selected = false;
+    } else {
+      options[i].disabled = false;
+    }
+    console.log("okk");
+  }
+}
+
+function replan() {
+  varBClassSeats = [];
+  varPClassSeats = [];
+  varSeatClass = '';
+  varTotalSeatSelected = false;
+  totalClickedSeats = 0;
+  // varTotalSeat = 1;
+  document.querySelector(".onlyTtlMainBox").classList.remove("dnone");
+  document.querySelector(".searchMainBox").classList.remove("dnone");
+  document.querySelector(".resultMainBox").classList.add("dnone");
+  document.querySelector(".seatSelectionMainBox").classList.add("dnone");
+  document.querySelector(".userDetailsMainBox").classList.add("dnone");
+}
+
+function resultCardSeatClassActive() {
+  let cardBox = document.querySelector(".ferryResultCards");
+  let seatClasses = cardBox.querySelectorAll(".seatClass");
+
+  seatClasses.forEach((seatClass, index) => {
+    seatClass.addEventListener("click", () => {
+      seatClasses.forEach((seatClass1) => {
+        seatClass1.classList.remove("active");
+      });
+      seatClass.classList.add("active");
+      let seatClassSelected = seatClass.classList;
+      varSeatClass = seatClassSelected[0];
+
+      // Determine the index of the selected seatClass1 element
+      let selectedSeatIndex = Array.from(seatClasses).indexOf(seatClass);
+      selectedSeatIndex = (selectedSeatIndex + 1) / 2;
+    });
+  });
+}
+
+// seat selction
+function seatClicked() {
+  varTotalSeat = document.querySelector('.tripBox input[name="adult"]').value
+  varTotalSeat = parseInt(varTotalSeat == '' ? 0 : varTotalSeat);
+
+  let seats = document.querySelectorAll(".ferryStructure .seat");
+  seats.forEach((seat) => {
+    seat.addEventListener("click", () => {
+      if (seat.classList.contains('selected')) {
+        seat.classList.remove("selected");
+        totalClickedSeats--;
+        varTotalSeatSelected = false;
+        if (seat.classList.contains('royal')) {
+          let seatPlace = varBClassSeats.indexOf(seat.getAttribute('data-sn'))
+          varBClassSeats.splice(seatPlace, (seatPlace + 1));
+        } else if (seat.classList.contains('luxury')) {
+          let seatPlace = varPClassSeats.indexOf(seat.getAttribute('data-sn'))
+          varPClassSeats.splice(seatPlace, (seatPlace + 1));
+        }
+      } else {
+        if (varTotalSeat <= totalClickedSeats) {
+          alert(`You already selected ${varTotalSeat} seats.`);
+          return;
+        } else {
+          seat.classList.add("selected");
+          totalClickedSeats++;
+          if (varTotalSeat == totalClickedSeats) {
+            varTotalSeatSelected = true;
+          };
+          if (seat.classList.contains('royal')) {
+            varBClassSeats.push(seat.getAttribute('data-sn'))
+          } else if (seat.classList.contains('luxury')) {
+            varPClassSeats.push(seat.getAttribute('data-sn'))
+          }
+        }
+      };
+      console.log(varBClassSeats)
+      console.log(varPClassSeats)
+    });
+  });
+}
+
+function seatNoAllot(tripID) {
+  const jsonStringFromStorage = sessionStorage.getItem('nautTripData');
+  let ferrys = JSON.parse(jsonStringFromStorage);
+  let currentFerry;
+
+  ferrys.forEach(ferry => {
+    let ferryID = ferry.tripId;
+    if (ferryID == tripID) {
+      currentFerry = ferry;
+    }
+  });
+
+  let bClass = currentFerry.bClass;
+  let pClass = currentFerry.pClass;
+
+  let seats = document.querySelectorAll('.ferryStructure .seat');
+  seats.forEach(seat => {
+    let sd = seat.getAttribute('data-sn');
+    if (sd) {
+      sd = sd.toLocaleUpperCase();
+      seat.innerHTML = sd;
+
+      // Check if the seat is booked in bClass
+      if (bClass[sd] && bClass[sd].isBooked === 1) {
+        seat.classList.add('booked');
+      }
+
+      // Check if the seat is booked in pClass
+      if (pClass[sd] && pClass[sd].isBooked === 1) {
+        seat.classList.add('booked');
+      }
+    }
+  });
+  seatClicked();
+  onlySeatClass();
+}
+
+function onlySeatClass() {
+  if (varSeatClass == '') { return; }
+  else {
+    varSeatClass = varSeatClass.toLowerCase()
+    let structureBox = document.querySelectorAll('.ferryStructure .structureBox');
+    structureBox.forEach(seatClass => {
+      if (seatClass.classList.contains(varSeatClass)) {
+        seatClass.classList.remove('dnone');
+      } else { seatClass.classList.add('dnone'); }
+    });
+  }
+}
+
+function passengerDetailTableCreate(totalSeat) {
+  let selectedFerry = 'nautika';
+  let userPersonalDetails = document.querySelector('.userPersonalDetails');
+  let tBody = userPersonalDetails.querySelector('tbody');
+  let tHead = userPersonalDetails.querySelector('thead');
+  tBody.innerHTML = '';
+  tHead.innerHTML = '';
+
+  let windowWidth = window.innerWidth;
+  if (windowWidth > 950) {
+
+    if (selectedFerry == 'nautika') {
+      tHead.innerHTML = `<tr>
+                          <th>Sno</th>
+                          <th>Seat</th>
+                          <th>Passenger Name</th>
+                          <th>Gender</th>
+                          <th>Age</th>
+                          <th>Nationality</th>
+                          <th>ID Number</th>
+                        </tr>
+    `;
+
+      // merging both seat class
+      function mergeAndAddPrefix(b, p) {
+        function capitalizeSeat(seat) {
+          var parts = seat.match(/^(\d+)([a-zA-Z])$/);
+          if (parts) {
+            var digitPart = parts[1];
+            var letterPart = parts[2].toUpperCase();
+            return digitPart + letterPart;
+          } else {
+            // Handle invalid seat format if needed
+            return seat;
+          }
+        }
+      
+        var bSeats = b.map(seat => 'Royal - ' + capitalizeSeat(seat));
+        var pSeats = p.map(seat => 'Luxury - ' + capitalizeSeat(seat));
+        var mergedSeats = bSeats.concat(pSeats);
+        return mergedSeats;
+      };
+      
+      var resultArray = mergeAndAddPrefix(varBClassSeats, varPClassSeats);
+      console.log(resultArray);
+
+      for (let i = 0; i < totalSeat; i++) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+      <td>${i + 1}</td>
+      <td>${resultArray[i]}</td>
+      <!-- <td>
+          <select name="title" id="">
+              <option value="MR">MR</option>
+              <option value="MRS">MRS</option>
+              <option value="Miss">Miss</option>
+              <option value="Master">Master</option>
+              <option value="DR">DR</option>
+          </select>
+      </td> -->
+      <td><input type="text" name="name" placeholder="Name"></td>
+      <td>
+          <select name="gender" id="">
+              <option value="Male">Male</option>
+              <option value="Female">Femail</option>
+          </select>
+      </td>
+      <td style="width:90px;"><input type="number" name="age" placeholder="Age"></td>
+      <td>
+          <select name="nationality" id="" onchange="nationality(value)">
+              <option value="India">India</option>
+              <option value="China">China</option>
+          </select>
+      </td>
+      <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
+      `
+        tBody.appendChild(tr);
+      }
+    } else {
+      for (let i = 0; i < totalSeat; i++) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+      <td>${i + 1}</td>
+      <td>
+          <select name="title" id="">
+              <option value="MR">MR</option>
+              <option value="MRS">MRS</option>
+              <option value="Miss">Miss</option>
+              <option value="Master">Master</option>
+              <option value="DR">DR</option>
+          </select>
+      </td>
+      <td><input type="text" name="name" placeholder="Name"></td>
+      <td>
+          <select name="gender" id="">
+              <option value="Male">Male</option>
+              <option value="Female">Femail</option>
+          </select>
+      </td>
+      <td style="width:70px"><input type="number" name="age" placeholder="Age"></td>
+      <td>
+          <select name="nationality" id="" onchange="nationality(value)">
+              <option value="India">India</option>
+              <option value="China">China</option>
+          </select>
+      </td>
+      <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
+      `
+        tBody.appendChild(tr);
+      }
+    }
+  } else {
+    if (selectedFerry == 'nautika') {
+      tHead.innerHTML = `<tr>
+                            <th>Seat</th>
+                            <th>Details</th>
+                          </tr>
+      `;
+
+      // merging both seat class
+      function mergeAndAddPrefix(b, p) {
+        function capitalizeSeat(seat) {
+          var parts = seat.match(/^(\d+)([a-zA-Z])$/);
+          if (parts) {
+            var digitPart = parts[1];
+            var letterPart = parts[2].toUpperCase();
+            return digitPart + letterPart;
+          } else {
+            // Handle invalid seat format if needed
+            return seat;
+          }
+        }
+      
+        var bSeats = b.map(seat => 'Royal - ' + capitalizeSeat(seat));
+        var pSeats = p.map(seat => 'Luxury - ' + capitalizeSeat(seat));
+        var mergedSeats = bSeats.concat(pSeats);
+        return mergedSeats;
+      }
+      
+      var resultArray = mergeAndAddPrefix(varBClassSeats, varPClassSeats);
+      console.log(resultArray);
+      
+
+      for (let i = 0; i < totalSeat; i++) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td>${resultArray[i]}</td>
+        <td>
+            <div class="formBox1">
+              <div class="inner">
+                <div class="group">
+                  <input type="text" name="name" placeholder="Name">
+                </div>
+                <div class="group small">
+                  <select name="gender" id="">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+                <div class="group small">
+                  <input type="number" name="age" placeholder="Age">
+                </div>
+                <div class="group">
+                  <select name="nationality" id="" onchange="nationality(value)">
+                    <option value="India">India</option>
+                    <option value="China">China</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <input type="text" name="idNumber" placeholder="ID Number" class="idNumber">
+                </div>
+              </div>
+            </div>
+        </td>
+        `;
+        tBody.appendChild(tr);
+      }
+    } else {
+      for (let i = 0; i < totalSeat; i++) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td>${i + 1}</td>
+        <td>
+            <select name="title" id="">
+                <option value="MR">MR</option>
+                <option value="MRS">MRS</option>
+                <option value="Miss">Miss</option>
+                <option value="Master">Master</option>
+                <option value="DR">DR</option>
+            </select>
+        </td>
+        <td><input type="text" name="name" placeholder="Name"></td>
+        <td>
+            <select name="gender" id="">
+                <option value="Male">Male</option>
+                <option value="Femail">Femail</option>
+            </select>
+        </td>
+        <td style="width:70px"><input type="number" name="age" placeholder="Age"></td>
+        <td>
+            <select name="nationality" id="" onchange="nationality(value)">
+                <option value="India">India</option>
+                <option value="China">China</option>
+            </select>
+        </td>
+        <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
+        `
+        tBody.appendChild(tr);
+      }
+    }
+  }
+
+};
+window.addEventListener('resize', passengerDetailTableCreate(varTotalSeat))
+
+function passengerDetailsPage() {
+
+  if (!varTotalSeatSelected) { alert(`You Didn't selected ${document.querySelector('.tripBox input[name="adult"]').value} seats.`); return; }
+  document.querySelector(".seatSelectionMainBox").classList.add("dnone");
+  document.querySelector(".userDetailsMainBox").classList.remove("dnone");
+
+  let TS = document.querySelector('input[name="adult"]').value;
+  let totalSeat = parseInt(TS == '' ? 0 : TS);
+  passengerDetailTableCreate(totalSeat)
+}
+
+function autoDateSet() {
+  let date = new Date();
+  let CM = date.getMonth() + 1; // Months are zero-based, so add 1
+  let CD = date.getDate();
+  let FM = CM > 9 ? CM : '0' + CM;
+  let FD = CD > 9 ? CD : '0' + CD;
+  let cDateString = date.getFullYear() + '-' + FM + '-' + FD;
+  document.querySelector('.tripBox input[name="date"]').value = cDateString;
+} autoDateSet();
+
+// delete after work
+
+</script>
+
+<!-- request js -->
+<script>
+  // let serverURL = '';
+let serverURL = 'https://nairrs.com/ferry/';
+// let serverURL = 'http://localhost/ferry_booking/';
+
+function getTripData() {
+  let tripBox = document.querySelector('.tripBox');
+  let userRouteInput = {
+    "date": tripBox.querySelector('input[name="date"]').value,
+    "from": tripBox.querySelector('select[name="from"]').value,
+    "to": tripBox.querySelector('select[name="to"]').value,
+    "userName": "Andamanbooking",
+    "token": "U2e5gctrduG34vXa8UExu0KkOwutgfKr62uIyv3ZgU="
+  };
+
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  let requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: JSON.stringify(userRouteInput),
+    redirect: 'follow'
+  };
+
+  fetch(`${serverURL}php/main2.php?getTrip`, requestOptions)
+    .then(response => response.json())
+    .then(result => createResultCards(result))
+    .catch(error => console.log('error', error));
+}
+
+// function getTripData() {
+//   let tripBox = document.querySelector('.tripBox');
+//   let userRouteInput = {
+//     "date": tripBox.querySelector('input[name="date"]').value,
+//     "from": tripBox.querySelector('select[name="from"]').value,
+//     "to": tripBox.querySelector('select[name="to"]').value,
+//     "userName": "Andamanbooking",
+//     "token": "U2e5gctrduG34vXa8UExu0KkOwutgfKr62uIyv3ZgU="
+//   };
+
+// 	postTripData(20-12-2023, 'Swaraj Dweep', 'Port Blair')
+// 	.then(result => {
+// 		console.log('Result:', result);
+// 		// Handle the result as needed
+// 	})
+// 	.catch(error => {
+// 		console.error('Error:', error);
+// 		// Handle errors
+// 	});
+// }
+
+// function getTripData() {
+//   fetch(`${serverURL}js/data-ferry2.json`)
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error(`HTTP error! Status: ${response.status}`);
+//       }
+//       return response.json();
+//     })
+//     .then(data => {
+//       createResultCards(data);
+//     })
+//     .catch(error => {
+//       console.error('Fetch error:', error);
+//     });
+// }
+
+let ferrDetails = [
+  { ID: '2', name: 'Nutika', img: 'nautika.png', clickFun: "seatSelectionPage(event,'v1')" },
+  { ID: '1', name: 'NutikaLite', img: 'nautika-lite.png', clickFun: "seatSelectionPage(event,'v2')" },
+  { ID: '3', name: 'Makruzz', img: 'makruzz.jpg', clickFun: "passengerDetails()" }
+];
+
+function createResultCards(data) {
+  data.data.sort((a, b) => {
+    let timeA = a.dTime.hour * 60 + a.dTime.minute;
+    let timeB = b.dTime.hour * 60 + b.dTime.minute;
+    return timeA - timeB;
+  });
+
+  let vessel = [], ferrys = data.data;
+  sessionStorage.setItem('nautTripData', JSON.stringify(ferrys));
+  let ferryResultTableHead = document.querySelector('.ferryResultTable thead');
+  let ferryResultTable = document.querySelector('.ferryResultTable tbody');
+  
+
+  function createTableRows() {
+    let sNo = 0, windowWidth = window.innerWidth;
+    ferryResultTable.innerHTML = '';
+    if (windowWidth < 900) {
+      ferryResultTableHead.innerHTML = `
+        <tr>
+          <th>Departure</th>
+          <th>Availability</th>
+          <th></th>
+        </tr>`;
+      ferrys.forEach(ferry => {
+        ferrDetails.forEach(ferryDetail => {
+          if (parseInt(ferryDetail.ID) == ferry.vesselID)
+            vessel = ferryDetail;
+        });
+
+        let ferryId = ferry.id;
+        let tripId = ferry.tripId;
+        let vesselId = ferry.vesselID;
+
+        let dTime = (ferry.dTime.hour > 9 ? ferry.dTime.hour : '0' + ferry.dTime.hour) + ":" + (ferry.dTime.minute > 9 ? ferry.dTime.minute : '0' + ferry.dTime.minute);
+        let aTime = (ferry.aTime.hour > 9 ? ferry.aTime.hour : '0' + ferry.aTime.hour) + ":" + (ferry.aTime.minute > 9 ? ferry.aTime.minute : '0' + ferry.aTime.minute);
+
+        let departureDate = new Date(`1970-01-01T${dTime}:00`);
+        let arrivalDate = new Date(`1970-01-01T${aTime}:00`);
+        let timeDifference = arrivalDate - departureDate;
+        let dHours = Math.floor(timeDifference / (60 * 60 * 1000));
+        let dMinutes = Math.floor((timeDifference % (60 * 60 * 1000)) / (60 * 1000));
+        let duration = (dHours > 9 ? dHours : '0' + dHours) + ":" + (dMinutes > 9 ? dMinutes : '0' + dMinutes);
+
+        let pClassFare = ferry.fares.pBaseFare;
+        let pClassSeatAvailable = 0;
+        for (let seat in ferry.pClass) {
+          if (ferry.pClass[seat].isBooked === 0) {
+            pClassSeatAvailable++;
+          }
+        }
+
+        let bClassFare = ferry.fares.bBaseFare;
+        let bClassSeatAvailable = 0;
+        for (let seat in ferry.bClass) {
+          if (ferry.bClass[seat].isBooked === 0) {
+            bClassSeatAvailable++;
+          }
+        }
+
+        sNo++
+        let tableRow = document.createElement('tr');
+        tableRow.innerHTML = `
+          <td>${vessel.name}<br> ${dTime}</td>
+          <td> Royal (${bClassSeatAvailable})<br><span class="base-fare">(₹${bClassFare}.00)</span>
+              <hr style="margin:.5rem;"> Luxury (${pClassSeatAvailable})<br><span class="base-fare">(₹${bClassFare}.00)</span>
+          </td><!---->
+          <td> <div class="btns">
+          <input type="hidden" value="${tripId}" >
+          <button class="btn" onclick="${vessel.clickFun}" data-ferryId="${ferryId}" data-tripId="${tripId}" data-vesselId="${vesselId}">Book Now</button>
+        </div></td>
+        `;
+        ferryResultTable.appendChild(tableRow);
+      });
+    } else {
+      ferryResultTableHead.innerHTML = `
+      <tr>
+        <th>Sno</th>
+        <th>Vessel</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Depature</th>
+        <th>Luxury class<br>(Seat avilable)</th>
+        <th>Royal class<br>(Seat avilable)</th>
+        <th></th>
+      </tr>`;
+      ferrys.forEach(ferry => {
+        ferrDetails.forEach(ferryDetail => {
+          if (parseInt(ferryDetail.ID) == ferry.vesselID)
+            vessel = ferryDetail;
+        });
+
+        let ferryId = ferry.id;
+        let tripId = ferry.tripId;
+        let vesselId = ferry.vesselID;
+
+        let dTime = (ferry.dTime.hour > 9 ? ferry.dTime.hour : '0' + ferry.dTime.hour) + ":" + (ferry.dTime.minute > 9 ? ferry.dTime.minute : '0' + ferry.dTime.minute);
+        let aTime = (ferry.aTime.hour > 9 ? ferry.aTime.hour : '0' + ferry.aTime.hour) + ":" + (ferry.aTime.minute > 9 ? ferry.aTime.minute : '0' + ferry.aTime.minute);
+
+        let departureDate = new Date(`1970-01-01T${dTime}:00`);
+        let arrivalDate = new Date(`1970-01-01T${aTime}:00`);
+        let timeDifference = arrivalDate - departureDate;
+        let dHours = Math.floor(timeDifference / (60 * 60 * 1000));
+        let dMinutes = Math.floor((timeDifference % (60 * 60 * 1000)) / (60 * 1000));
+        let duration = (dHours > 9 ? dHours : '0' + dHours) + ":" + (dMinutes > 9 ? dMinutes : '0' + dMinutes);
+
+        let pClassFare = ferry.fares.pBaseFare;
+        let pClassSeatAvailable = 0;
+        for (let seat in ferry.pClass) {
+          if (ferry.pClass[seat].isBooked === 0) {
+            pClassSeatAvailable++;
+          }
+        }
+
+        let bClassFare = ferry.fares.bBaseFare;
+        let bClassSeatAvailable = 0;
+        for (let seat in ferry.bClass) {
+          if (ferry.bClass[seat].isBooked === 0) {
+            bClassSeatAvailable++;
+          }
+        }
+
+        sNo++
+        let tableRow = document.createElement('tr');
+        tableRow.innerHTML = `
+          <td>${sNo}</td>
+          <td>${vessel.name}</td>
+          <td>${ferry.from}</td>
+          <td>${ferry.to}</td>
+          <td>${dTime}</td>
+          <td>${bClassSeatAvailable}<br><span>(Fare - ₹${bClassFare}.00)</span></td>
+          <td>${pClassSeatAvailable}<br><span>(Fare - ₹${bClassFare}.00)</span></td>
+          <td>
+            <div class="btns">
+              <input type="hidden" value="${tripId}" >
+              <button class="btn" onclick="${vessel.clickFun}" data-ferryId="${ferryId}" data-tripId="${tripId}" data-vesselId="${vesselId}">Book Now</button>
+            </div>
+          </td>
+        `;
+        ferryResultTable.appendChild(tableRow);
+      });
+    }
+
+    // ferrys.forEach(ferry => {
+    //   ferrDetails.forEach(ferryDetail => {
+    //     if (parseInt(ferryDetail.ID) == ferry.vesselID)
+    //       vessel = ferryDetail;
+    //   });
+
+    //   let ferryId = ferry.id;
+    //   let tripId = ferry.tripId;
+    //   let vesselId = ferry.vesselID;
+
+    //   let dTime = (ferry.dTime.hour > 9 ? ferry.dTime.hour : '0' + ferry.dTime.hour) + ":" + (ferry.dTime.minute > 9 ? ferry.dTime.minute : '0' + ferry.dTime.minute);
+    //   let aTime = (ferry.aTime.hour > 9 ? ferry.aTime.hour : '0' + ferry.aTime.hour) + ":" + (ferry.aTime.minute > 9 ? ferry.aTime.minute : '0' + ferry.aTime.minute);
+
+    //   let departureDate = new Date(`1970-01-01T${dTime}:00`);
+    //   let arrivalDate = new Date(`1970-01-01T${aTime}:00`);
+    //   let timeDifference = arrivalDate - departureDate;
+    //   let dHours = Math.floor(timeDifference / (60 * 60 * 1000));
+    //   let dMinutes = Math.floor((timeDifference % (60 * 60 * 1000)) / (60 * 1000));
+    //   let duration = (dHours > 9 ? dHours : '0' + dHours) + ":" + (dMinutes > 9 ? dMinutes : '0' + dMinutes);
+
+    //   let pClassFare = ferry.fares.pBaseFare;
+    //   let pClassSeatAvailable = 0;
+    //   for (let seat in ferry.pClass) {
+    //     if (ferry.pClass[seat].isBooked === 0) {
+    //       pClassSeatAvailable++;
+    //     }
+    //   }
+
+    //   let bClassFare = ferry.fares.bBaseFare;
+    //   let bClassSeatAvailable = 0;
+    //   for (let seat in ferry.bClass) {
+    //     if (ferry.bClass[seat].isBooked === 0) {
+    //       bClassSeatAvailable++;
+    //     }
+    //   }
+
+    //   sNo++
+    //   let tableRow = document.createElement('tr');
+    //   tableRow.innerHTML = `
+    //     <td>${sNo}</td>
+    //     <td>${vessel.name}</td>
+    //     <td>${ferry.from}</td>
+    //     <td>${ferry.to}</td>
+    //     <td>${dTime}</td>
+    //     <td>${bClassSeatAvailable}<br>(Fare - ₹${bClassFare}.00)</td>
+    //     <td>${pClassSeatAvailable}<br>(Fare - ₹${pClassFare}.00)</td>
+    //     <td>
+    //       <div class="btns">
+    //         <input type="hidden" value="${tripId}" >
+    //         <button class="btn" onclick="${vessel.clickFun}" data-ferryId="${ferryId}" data-tripId="${tripId}" data-vesselId="${vesselId}">Book Now</button>
+    //       </div>
+    //     </td>
+    //   `;
+    //   let windowWidth = window.innerWidth;
+    //   if(windowWidth > 600){
+    //     ferryResultTable.appendChild(tableRow);
+    //   }else {}
+
+    // });
+  }; createTableRows()
+
+  window.addEventListener('resize', createTableRows);
+
+  document.querySelector(".onlyTtlMainBox").classList.add("dnone");
+  document.querySelector(".searchMainBox").classList.add("dnone");
+  document.querySelector(".resultMainBox").classList.remove("dnone");
+  resultCardSeatClassActive();
+}
+
+function seatSelectionPage(event, v) {
+  let vURL = `${serverURL}vessel/${v}.html`;
+
+  let v1 = `<div class="inner vessel2"><div class="class2 structureBox v2-royal royal"><img src="img/v2-royal.png" alt=""><div class="seatBox"><div class="seats left"><div class="seat" data-sn="1a"></div><div class="seat" data-sn="1b"></div><div class="seat" data-sn="2a"></div><div class="seat" data-sn="2b"></div><div class="seat" data-sn="3a"></div><div class="seat" data-sn="3b"></div><div class="seat" data-sn="4a"></div><div class="seat" data-sn="4b"></div><div class="seat" data-sn="5a"></div><div class="seat" data-sn="5b"></div><div class="seat" data-sn="6a"></div><div class="seat" data-sn="6b"></div><div class="seat" data-sn="7a"></div><div class="seat" data-sn="7b"></div><div class="seat" data-sn="8a"></div><div class="seat" data-sn="8b"></div><div class="seat" data-sn="9a"></div><div class="seat" data-sn="9b"></div><div class="seat" data-sn="10a"></div><div class="seat" data-sn="10b"></div><div class="seat" data-sn="11a"></div><div class="seat" data-sn="11b"></div><div class="seat" data-sn="12a"></div><div class="seat" data-sn="12b"></div></div><div class="seats center"><div class="seat" data-sn="5c"></div><div class="seat" data-sn="5d"></div><div class="seat" data-sn="5e"></div><div class="seat" data-sn="5f"></div><div class="seat" data-sn="5g"></div><div class="seat" data-sn="5h"></div><div class="seat" data-sn="6c"></div><div class="seat" data-sn="6d"></div><div class="seat" data-sn="6e"></div><div class="seat" data-sn="6f"></div><div class="seat" data-sn="6g"></div><div class="seat" data-sn="6h"></div><div class="seat" data-sn="7c"></div><div class="seat" data-sn="7d"></div><div class="seat" data-sn="7e"></div><div class="seat" data-sn="7f"></div><div class="seat" data-sn="7g"></div><div class="seat" data-sn="7h"></div><div class="seat" data-sn="8c"></div><div class="seat" data-sn="8d"></div><div class="seat" data-sn="8e"></div><div class="seat" data-sn="8f"></div><div class="seat" data-sn="8g"></div><div class="seat" data-sn="8h"></div><div class="seat" data-sn="9c"></div><div class="seat" data-sn="9d"></div><div class="seat" data-sn="9e"></div><div class="seat" data-sn="9f"></div><div class="seat" data-sn="9g"></div><div class="seat" data-sn="9h"></div><div class="seat" data-sn="10c"></div><div class="seat" data-sn="10d"></div><div class="seat" data-sn="10e"></div><div class="seat" data-sn="10f"></div><div class="seat" data-sn="10g"></div><div class="seat" data-sn="10h"></div><div class="seat" data-sn="11c"></div><div class="seat" data-sn="11d"></div><div class="seat" data-sn="11e"></div><div class="seat" data-sn="11f"></div><div class="seat" data-sn="11g"></div><div class="seat" data-sn="11h"></div></div><div class="seats right"><div class="subSeat1"><div class="seat" data-sn="1i"></div><div class="seat" data-sn="1j"></div><div class="seat" data-sn="1k"></div><div class="seat" data-sn="2i"></div><div class="seat" data-sn="2j"></div><div class="seat" data-sn="2k"></div></div><div class="subSeat2"><div class="seat" data-sn="3j"></div><div class="seat" data-sn="3k"></div><div class="seat" data-sn="4j"></div><div class="seat" data-sn="4k"></div><div class="seat" data-sn="5j"></div><div class="seat" data-sn="5k"></div><div class="seat" data-sn="6j"></div><div class="seat" data-sn="6k"></div><div class="seat" data-sn="7j"></div><div class="seat" data-sn="7k"></div><div class="seat" data-sn="8j"></div><div class="seat" data-sn="8k"></div><div class="seat" data-sn="9j"></div><div class="seat" data-sn="9k"></div><div class="seat" data-sn="10j"></div><div class="seat" data-sn="10k"></div><div class="seat" data-sn="11j"></div><div class="seat" data-sn="11k"></div><div class="seat" data-sn="12j"></div><div class="seat" data-sn="12k"></div></div></div></div></div><div class="class1 structureBox v2-luxury luxury"><img src="img/v2-luxury.png" alt=""><div class="seatBox seatBox1"><div class="seats left"><div class="seat" data-sn="2a"></div><div class="seat" data-sn="2b"></div><div class="seat" data-sn="2c"></div><div class="seat" data-sn="3a"></div><div class="seat" data-sn="3b"></div><div class="seat" data-sn="3c"></div><div class="seat" data-sn="4a"></div><div class="seat" data-sn="4b"></div><div class="seat" data-sn="4c"></div><div class="seat" data-sn="5a"></div><div class="seat" data-sn="5b"></div><div class="seat" data-sn="5c"></div><div class="seat" data-sn="6a"></div><div class="seat" data-sn="6b"></div><div class="seat" data-sn="6c"></div></div><div class="seats center"><div class="subSeat1"><div class="seat" data-sn="1e" ></div><div class="seat" data-sn="1f" ></div><div class="seat" data-sn="1g" ></div><div class="seat" data-sn="1h" ></div><div class="seat" data-sn="1i" ></div></div><div class="subSeat2"><div class="seat" data-sn="2d" ></div><div class="seat" data-sn="2e" ></div><div class="seat" data-sn="2f" ></div><div class="seat" data-sn="2g" ></div><div class="seat" data-sn="2h" ></div><div class="seat" data-sn="2i" ></div><div class="seat" data-sn="3d" ></div><div class="seat" data-sn="3e" ></div><div class="seat" data-sn="3f" ></div><div class="seat" data-sn="3g" ></div><div class="seat" data-sn="3h" ></div><div class="seat" data-sn="3i" ></div><div class="seat" data-sn="4d" ></div><div class="seat" data-sn="4e" ></div><div class="seat" data-sn="4f" ></div><div class="seat" data-sn="4g" ></div><div class="seat" data-sn="4h" ></div><div class="seat" data-sn="4i" ></div><div class="seat" data-sn="5d" ></div><div class="seat" data-sn="5e" ></div><div class="seat" data-sn="5f" ></div><div class="seat" data-sn="5g" ></div><div class="seat" data-sn="5h" ></div><div class="seat" data-sn="5i" ></div><div class="seat" data-sn="6d" ></div><div class="seat" data-sn="6e" ></div><div class="seat" data-sn="6f" ></div><div class="seat" data-sn="6g" ></div><div class="seat" data-sn="6h" ></div><div class="seat" data-sn="6i" ></div><div class="seat" data-sn="7d" ></div><div class="seat" data-sn="7e" ></div><div class="seat" data-sn="7f" ></div><div class="seat" data-sn="7g" ></div><div class="seat" data-sn="7h" ></div><div class="seat" data-sn="7i" ></div></div></div><div class="seats right"><div class="seat" data-sn="2j"></div><div class="seat" data-sn="2k"></div><div class="seat" data-sn="2l"></div><div class="seat" data-sn="3j"></div><div class="seat" data-sn="3k"></div><div class="seat" data-sn="3l"></div><div class="seat" data-sn="4j"></div><div class="seat" data-sn="4k"></div><div class="seat" data-sn="4l"></div><div class="seat" data-sn="5j"></div><div class="seat" data-sn="5k"></div><div class="seat" data-sn="5l"></div><div class="seat" data-sn="6j"></div><div class="seat" data-sn="6k"></div><div class="seat" data-sn="6l"></div></div></div><div class="seatBox seatBox2"><div class="seats left"><div class="seat" data-sn="7a"></div><div class="seat" data-sn="7b"></div><div class="seat" data-sn="7c"></div><div class="seat" data-sn="8a"></div><div class="seat" data-sn="8b"></div><div class="seat" data-sn="8c"></div><div class="seat" data-sn="9a"></div><div class="seat" data-sn="9b"></div><div class="seat" data-sn="9c"></div><div class="seat" data-sn="10a"></div><div class="seat" data-sn="10b"></div><div class="seat" data-sn="10c"></div><div class="seat" data-sn="11a"></div><div class="seat" data-sn="11b"></div><div class="seat" data-sn="11c"></div><div class="seat" data-sn="12a"></div><div class="seat" data-sn="12b"></div><div class="seat" data-sn="12c"></div><div class="seat" data-sn="13a"></div><div class="seat" data-sn="13b"></div><div class="seat" data-sn="13c"></div><div class="seat" data-sn="14a"></div><div class="seat" data-sn="14b"></div><div class="seat" data-sn="14c"></div><div class="seat" data-sn="15a"></div><div class="seat" data-sn="15b"></div><div class="seat" data-sn="15c"></div><div class="seat" data-sn="16a"></div><div class="seat" data-sn="16b"></div><div class="seat" data-sn="16c"></div><div class="seat" data-sn="17a"></div><div class="seat" data-sn="17b"></div><div class="seat" data-sn="17c"></div></div><div class="seats center"><div class="subSeat1"><div class="seat" data-sn="8d"></div><div class="seat" data-sn="8e"></div><div class="seat" data-sn="8f"></div><div class="seat" data-sn="8g"></div><div class="seat" data-sn="8h"></div><div class="seat" data-sn="8i"></div><div class="seat" data-sn="9d"></div><div class="seat" data-sn="9e"></div><div class="seat" data-sn="9f"></div><div class="seat" data-sn="9g"></div><div class="seat" data-sn="9h"></div><div class="seat" data-sn="9i"></div><div class="seat" data-sn="10d"></div><div class="seat" data-sn="10e"></div><div class="seat" data-sn="10f"></div><div class="seat" data-sn="10g"></div><div class="seat" data-sn="10h"></div><div class="seat" data-sn="10i"></div><div class="seat" data-sn="11d"></div><div class="seat" data-sn="11e"></div><div class="seat" data-sn="11f"></div><div class="seat" data-sn="11g"></div><div class="seat" data-sn="11h"></div><div class="seat" data-sn="11i"></div><div class="seat" data-sn="12d"></div><div class="seat" data-sn="12e"></div><div class="seat" data-sn="12f"></div><div class="seat" data-sn="12g"></div><div class="seat" data-sn="12h"></div><div class="seat" data-sn="12i"></div><div class="seat" data-sn="13d"></div><div class="seat" data-sn="13e"></div><div class="seat" data-sn="13f"></div><div class="seat" data-sn="13g"></div><div class="seat" data-sn="13h"></div><div class="seat" data-sn="13i"></div><div class="seat" data-sn="14d"></div><div class="seat" data-sn="14e"></div><div class="seat" data-sn="14f"></div><div class="seat" data-sn="14g"></div><div class="seat" data-sn="14h"></div><div class="seat" data-sn="14i"></div><div class="seat" data-sn="15d"></div><div class="seat" data-sn="15e"></div><div class="seat" data-sn="15f"></div><div class="seat" data-sn="15g"></div><div class="seat" data-sn="15h"></div><div class="seat" data-sn="15i"></div><div class="seat" data-sn="16d"></div><div class="seat" data-sn="16e"></div><div class="seat" data-sn="16f"></div><div class="seat" data-sn="16g"></div><div class="seat" data-sn="16h"></div><div class="seat" data-sn="16i"></div></div><div class="subSeat2"><div class="seat" data-sn="17e"></div><div class="seat" data-sn="17f"></div><div class="seat" data-sn="17g"></div><div class="seat" data-sn="17h"></div><div class="seat" data-sn="17i"></div></div></div><div class="seats right"><div class="seat" data-sn="7j"></div><div class="seat" data-sn="7k"></div><div class="seat" data-sn="7l"></div><div class="seat" data-sn="8j"></div><div class="seat" data-sn="8k"></div><div class="seat" data-sn="8l"></div><div class="seat" data-sn="9j"></div><div class="seat" data-sn="9k"></div><div class="seat" data-sn="9l"></div><div class="seat" data-sn="10j"></div><div class="seat" data-sn="10k"></div><div class="seat" data-sn="10l"></div><div class="seat" data-sn="11j"></div><div class="seat" data-sn="11k"></div><div class="seat" data-sn="11l"></div><div class="seat" data-sn="12j"></div><div class="seat" data-sn="12k"></div><div class="seat" data-sn="12l"></div><div class="seat" data-sn="13j"></div><div class="seat" data-sn="13k"></div><div class="seat" data-sn="13l"></div><div class="seat" data-sn="14j"></div><div class="seat" data-sn="14k"></div><div class="seat" data-sn="14l"></div><div class="seat" data-sn="15j"></div><div class="seat" data-sn="15k"></div><div class="seat" data-sn="15l"></div><div class="seat" data-sn="16j"></div><div class="seat" data-sn="16k"></div><div class="seat" data-sn="16l"></div><div class="seat" data-sn="17j"></div><div class="seat" data-sn="17k"></div><div class="seat" data-sn="17l"></div></div></div></div></div>`;
+  let v2 = `<div class="inner vessel1"><div class="class2 structureBox v1-royal royal"><img src="img/v1-royal.png" alt=""><div class="seatBox"><div class="seats left"><div class="seat royal" data-sn="1a"></div><div class="seat royal" data-sn="1b"></div><div class="seat royal" data-sn="1c"></div><div class="seat royal" data-sn="2a"></div><div class="seat royal" data-sn="2b"></div><div class="seat royal" data-sn="2c"></div><div class="seat royal" data-sn="3a"></div><div class="seat royal" data-sn="3b"></div><div class="seat royal" data-sn="3c"></div><div class="seat royal" data-sn="4a"></div><div class="seat royal" data-sn="4b"></div><div class="seat royal" data-sn="4c"></div></div><div class="seats right"><div class="seat royal" data-sn="1d"></div><div class="seat royal" data-sn="1e"></div><div class="seat royal" data-sn="1f"></div><div class="seat royal" data-sn="2d"></div><div class="seat royal" data-sn="2e"></div><div class="seat royal" data-sn="2f"></div><div class="seat royal" data-sn="3d"></div><div class="seat royal" data-sn="3e"></div><div class="seat royal" data-sn="3f"></div><div class="seat royal" data-sn="4d"></div><div class="seat royal" data-sn="4e"></div><div class="seat royal" data-sn="4f"></div><div class="seat royal" data-sn="5d"></div><div class="seat royal" data-sn="5e"></div><div class="seat royal" data-sn="5f"></div></div></div></div><div class="class1 structureBox v1-luxury luxury"><img src="img/v1-luxury.png" alt=""><div class="seatBox seatBox1"><div class="seats left"><div class="seat luxury" data-sn="1a"></div><div class="seat luxury" data-sn="1b"></div><div class="seat luxury" data-sn="1c"></div><div class="seat luxury" data-sn="2a"></div><div class="seat luxury" data-sn="2b"></div><div class="seat luxury" data-sn="2c"></div><div class="seat luxury" data-sn="3a"></div><div class="seat luxury" data-sn="3b"></div><div class="seat luxury" data-sn="3c"></div><div class="seat luxury" data-sn="4a"></div><div class="seat luxury" data-sn="4b"></div><div class="seat luxury" data-sn="4c"></div><div class="seat luxury" data-sn="5a"></div><div class="seat luxury" data-sn="5b"></div><div class="seat luxury" data-sn="5c"></div><div class="seat luxury" data-sn="6a"></div><div class="seat luxury" data-sn="6b"></div><div class="seat luxury" data-sn="6c"></div><div class="seat luxury" data-sn="7a"></div><div class="seat luxury" data-sn="7b"></div><div class="seat luxury" data-sn="7c"></div><div class="seat luxury" data-sn="8a"></div><div class="seat luxury" data-sn="8b"></div><div class="seat luxury" data-sn="8c"></div><div class="seat luxury" data-sn="9a"></div><div class="seat luxury" data-sn="9b"></div><div class="seat luxury" data-sn="9c"></div><div class="seat luxury" data-sn="10a"></div><div class="seat luxury" data-sn="10b"></div><div class="seat luxury" data-sn="10c"></div></div><div class="seats center"><div class="subSeat1"><div class="seat luxury" data-sn="2e"></div><div class="seat luxury" data-sn="2f"></div><div class="seat luxury" data-sn="2g"></div><div class="seat luxury" data-sn="3e"></div><div class="seat luxury" data-sn="3f"></div><div class="seat luxury" data-sn="3g"></div><div class="seat luxury" data-sn="4e"></div><div class="seat luxury" data-sn="4f"></div><div class="seat luxury" data-sn="4g"></div><div class="seat luxury" data-sn="5e"></div><div class="seat luxury" data-sn="5f"></div><div class="seat luxury" data-sn="5g"></div></div><div class="subSeat2"><div class="seat luxury" data-sn="6d"></div><div class="seat luxury" data-sn="6e"></div><div class="seat luxury" data-sn="6f"></div><div class="seat luxury" data-sn="6g"></div><div class="seat luxury" data-sn="7d"></div><div class="seat luxury" data-sn="7e"></div><div class="seat luxury" data-sn="7f"></div><div class="seat luxury" data-sn="7g"></div><div class="seat luxury" data-sn="8d"></div><div class="seat luxury" data-sn="8e"></div><div class="seat luxury" data-sn="8f"></div><div class="seat luxury" data-sn="8g"></div><div class="seat luxury" data-sn="9d"></div><div class="seat luxury" data-sn="9e"></div><div class="seat luxury" data-sn="9f"></div><div class="seat luxury" data-sn="9g"></div></div></div><div class="seats right"><div class="seat luxury" data-sn="1h"></div><div class="seat luxury" data-sn="1i"></div><div class="seat luxury" data-sn="1j"></div><div class="seat luxury" data-sn="2h"></div><div class="seat luxury" data-sn="2i"></div><div class="seat luxury" data-sn="2j"></div><div class="seat luxury" data-sn="3h"></div><div class="seat luxury" data-sn="3i"></div><div class="seat luxury" data-sn="3j"></div><div class="seat luxury" data-sn="4h"></div><div class="seat luxury" data-sn="4i"></div><div class="seat luxury" data-sn="4j"></div><div class="seat luxury" data-sn="5h"></div><div class="seat luxury" data-sn="5i"></div><div class="seat luxury" data-sn="5j"></div><div class="seat luxury" data-sn="6h"></div><div class="seat luxury" data-sn="6i"></div><div class="seat luxury" data-sn="6j"></div><div class="seat luxury" data-sn="7h"></div><div class="seat luxury" data-sn="7i"></div><div class="seat luxury" data-sn="7j"></div><div class="seat luxury" data-sn="8h"></div><div class="seat luxury" data-sn="8i"></div><div class="seat luxury" data-sn="8j"></div><div class="seat luxury" data-sn="9h"></div><div class="seat luxury" data-sn="9i"></div><div class="seat luxury" data-sn="9j"></div><div class="seat luxury" data-sn="10h"></div><div class="seat luxury" data-sn="10i"></div><div class="seat luxury" data-sn="10j"></div></div></div><div class="seatBox seatBox2"><div class="seats left"><div class="seat luxury" data-sn="11a"></div><div class="seat luxury" data-sn="11b"></div><div class="seat luxury" data-sn="11c"></div><div class="seat luxury" data-sn="12a"></div><div class="seat luxury" data-sn="12b"></div><div class="seat luxury" data-sn="12c"></div><div class="seat luxury" data-sn="13a"></div><div class="seat luxury" data-sn="13b"></div><div class="seat luxury" data-sn="13c"></div><div class="seat luxury" data-sn="14a"></div><div class="seat luxury" data-sn="14b"></div><div class="seat luxury" data-sn="14c"></div><div class="seat luxury" data-sn="15a"></div><div class="seat luxury" data-sn="15b"></div><div class="seat luxury" data-sn="15c"></div><div class="seat luxury" data-sn="16a"></div><div class="seat luxury" data-sn="16b"></div><div class="seat luxury" data-sn="16c"></div><div class="seat luxury" data-sn="17a"></div><div class="seat luxury" data-sn="17b"></div><div class="seat luxury" data-sn="17c"></div><div class="seat luxury" data-sn="18a"></div><div class="seat luxury" data-sn="18b"></div><div class="seat luxury" data-sn="18c"></div><div class="seat luxury" data-sn="19a"></div><div class="seat luxury" data-sn="19b"></div><div class="seat luxury" data-sn="19c"></div></div><div class="seats center"><div class="seat luxury" data-sn="11d"></div><div class="seat luxury" data-sn="11e"></div><div class="seat luxury" data-sn="11f"></div><div class="seat luxury" data-sn="11g"></div><div class="seat luxury" data-sn="12d"></div><div class="seat luxury" data-sn="12e"></div><div class="seat luxury" data-sn="12f"></div><div class="seat luxury" data-sn="12g"></div><div class="seat luxury" data-sn="13d"></div><div class="seat luxury" data-sn="13e"></div><div class="seat luxury" data-sn="13f"></div><div class="seat luxury" data-sn="13g"></div><div class="seat luxury" data-sn="14d"></div><div class="seat luxury" data-sn="14e"></div><div class="seat luxury" data-sn="14f"></div><div class="seat luxury" data-sn="14g"></div><div class="seat luxury" data-sn="15d"></div><div class="seat luxury" data-sn="15e"></div><div class="seat luxury" data-sn="15f"></div><div class="seat luxury" data-sn="15g"></div><div class="seat luxury" data-sn="16d"></div><div class="seat luxury" data-sn="16e"></div><div class="seat luxury" data-sn="16f"></div><div class="seat luxury" data-sn="16g"></div><div class="seat luxury" data-sn="17d"></div><div class="seat luxury" data-sn="17e"></div><div class="seat luxury" data-sn="17f"></div><div class="seat luxury" data-sn="17g"></div><div class="seat luxury" data-sn="18d"></div><div class="seat luxury" data-sn="18e"></div><div class="seat luxury" data-sn="18f"></div><div class="seat luxury" data-sn="18g"></div><div class="seat luxury" data-sn="19d"></div><div class="seat luxury" data-sn="19e"></div><div class="seat luxury" data-sn="19f"></div><div class="seat luxury" data-sn="19g"></div></div><div class="seats right"><div class="seat luxury" data-sn="11h"></div><div class="seat luxury" data-sn="11i"></div><div class="seat luxury" data-sn="11j"></div><div class="seat luxury" data-sn="12h"></div><div class="seat luxury" data-sn="12i"></div><div class="seat luxury" data-sn="12j"></div><div class="seat luxury" data-sn="13h"></div><div class="seat luxury" data-sn="13i"></div><div class="seat luxury" data-sn="13j"></div><div class="seat luxury" data-sn="14h"></div><div class="seat luxury" data-sn="14i"></div><div class="seat luxury" data-sn="14j"></div><div class="seat luxury" data-sn="15h"></div><div class="seat luxury" data-sn="15i"></div><div class="seat luxury" data-sn="15j"></div><div class="seat luxury" data-sn="16h"></div><div class="seat luxury" data-sn="16i"></div><div class="seat luxury" data-sn="16j"></div><div class="seat luxury" data-sn="17h"></div><div class="seat luxury" data-sn="17i"></div><div class="seat luxury" data-sn="17j"></div><div class="seat luxury" data-sn="18h"></div><div class="seat luxury" data-sn="18i"></div><div class="seat luxury" data-sn="18j"></div><div class="seat luxury" data-sn="19h"></div><div class="seat luxury" data-sn="19i"></div><div class="seat luxury" data-sn="19j"></div></div></div></div></div>`;
+
+  if(v == 'v1'){
+    document.querySelector(".ferryStructure").innerHTML = v1;
+  }else if(v == 'v2'){
+    document.querySelector(".ferryStructure").innerHTML = v2;
+  }
+
+  document.querySelector(".resultMainBox").classList.add("dnone");
+      document.querySelector(".seatSelectionMainBox").classList.remove("dnone");
+      let selectedBtn = event.target;
+      varFerryId = selectedBtn.getAttribute('data-ferryId');
+      varTripId = selectedBtn.getAttribute('data-tripId');
+      varVesselId = selectedBtn.getAttribute('data-vesselId');
+      seatNoAllot(varTripId);
+
+  // fetch(vURL)
+  //   .then(response => response.text())
+  //   .then(result => {
+  //     document.querySelector(".resultMainBox").classList.add("dnone");
+  //     document.querySelector(".seatSelectionMainBox").classList.remove("dnone");
+  //     document.querySelector(".ferryStructure").innerHTML = result;
+  //     let selectedBtn = event.target;
+  //     varFerryId = selectedBtn.getAttribute('data-ferryId');
+  //     varTripId = selectedBtn.getAttribute('data-tripId');
+  //     varVesselId = selectedBtn.getAttribute('data-vesselId');
+  //     seatNoAllot(varTripId);
+  //   })
+  //   .catch(error => console.log('error', error));
+}
+
+function bookSeats() {
+  let passengers = [];
+  let sNo = 1;
+
+  document.querySelectorAll('.userPersonalDetails tbody tr').forEach(function (row) {
+    passengers.push({
+      id: sNo,
+      name: row.querySelector('input[name="name"]').value,
+      age: row.querySelector('input[name="age"]').value,
+      gender: row.querySelector('select[name="gender"]').value,
+      nationality: row.querySelector('select[name="nationality"]').value,
+      passport: row.querySelector('input[name="idNumber"]').value,
+      "tier": "P",
+      "seat": "2A",
+      "isCancelled": 0,
+    });
+    sNo++;
+  });
+
+  let UD = document.querySelector('.userDetails');
+  let userBookingInput = {
+    "bookingData": [
+      {
+        "bookingTS": 1665920428,
+        id: varFerryId,
+        tripId: varTripId,
+        vesselID: varVesselId,
+        from: document.querySelector('.tripBox select[name="from"]').value,
+        to: document.querySelector('.tripBox select[name="to"]').value,
+        "paxDetail": {
+          email: UD.querySelector('input[name="email"]').value,
+          phone: UD.querySelector('input[name="phone"]').value,
+          gstin: UD.querySelector('input[name="gst"]').value,
+          pax: passengers,
+          "infantPax": [
+            {
+              "id": 1,
+              "name": "inf a",
+              "dobTS": 1661970600,
+              "dob": "2022-09-01",
+              "gender": "M",
+              "nationality": "India",
+              "passport": "",
+              "isCancelled": 0
+            }
+          ],
+          "bClassSeats": varBClassSeats,
+          "pClassSeats": varPClassSeats
+        },
+        "userData": {
+          "apiUser": {
+            "userName": "agent",
+            "agency": "",
+            "token": "U2FsdGVkX18+ji7DedFzFnkTxo/aFlcWsvmp03XU5bgJ5XE9r1/DCIKHCabpP24hxlAB0F2kFnOYvu9FZaJiNA==",
+            "walletBalance": 0
+          }
+        },
+        "paymentData": {
+          "gstin": ""
+        }
+      }
+    ],
+    "userName": "agent",
+    "token": "U2FsdGVkX18+ji7DedFzFnkTxo/aFlcWsvmp03XU5bgJ5XE9r1/DCIKHCabpP24hxlAB0F2kFnOYvu9FZaJiNA=="
+  };
+
+  console.log(userBookingInput);
+  sendToDummyPage(userBookingInput);
+  return;
+
+  let myHeaders = new Headers();
+  myHeaders.append('Content-Type', 'application/json');
+
+  let requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: JSON.stringify([userBookingInput]),
+    redirect: 'follow',
+  };
+
+  fetch(`${serverURL}php/main2.php?bookSeats`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => handleBookingResponse(result))
+    .catch((error) => console.log('error', error));
+}
+
+function handleBookingResponse(response) {
+  console.log(response);
+}
+
+document.querySelector('.formBox1 form').addEventListener('submit', function (event) {
+  event.preventDefault();
+  bookSeats();
+});
+
+function sendToDummyPage(userBookingInput) {
+  let jsonDataEncoded = encodeURIComponent(JSON.stringify(userBookingInput));
+  window.location.href = "index2.php?data=" + jsonDataEncoded;
+}
+
+// delete after work
+// getTripData();
+
+</script>
+
+</section>
+
+    <script src="js/main2.js"></script>
+    <script src="js/request_handler2.js"></script>
+
+</body>
+</html>

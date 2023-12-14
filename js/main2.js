@@ -10,10 +10,10 @@ let varTotalSeat = 1;
 let totalClickedSeats = 0;
 
 // search format as per screen
-function searchFormateAsScreen(){
+function searchFormateAsScreen() {
   let opjopi = document.querySelector('.searchMainBox .mainBoxBody');
   let windowWidth = window.innerWidth;
-  if(windowWidth > 950){
+  if (windowWidth > 950) {
     opjopi.innerHTML = `
     <div class="formBox1">
     <div class="onlyLabel">
@@ -35,7 +35,7 @@ function searchFormateAsScreen(){
         <div class="btns">
         </div>
     </div>
-    <div class="tripBox">
+    <div class="tripBox" id="tripBox">
         <div class="trip">
             <div class="group">
                 <!-- <label for="">From</label> -->
@@ -75,10 +75,10 @@ function searchFormateAsScreen(){
     </div>
 </div>
       `;
-  }else{
+  } else {
     opjopi.innerHTML = `
     <div class="formBox1 mobScreen">
-    <div class="tripBox">
+    <div class="tripBox" id="tripBox">
         <div class="trip">
             <div class="group small">
                 <label for="">From</label>
@@ -117,7 +117,7 @@ function searchFormateAsScreen(){
     `;
   }
 
-};searchFormateAsScreen();
+}; searchFormateAsScreen();
 window.addEventListener('resize', searchFormateAsScreen)
 
 
@@ -125,7 +125,7 @@ window.addEventListener('resize', searchFormateAsScreen)
 function toggleTrip(btn) {
   let tripBox = document.querySelector(".tripBox");
   let trips = tripBox.querySelectorAll(".trip");
-codesandbox-cli
+  codesandbox - cli
   // If there is only one tripBox, add two more
   if (trips.length === 1) {
     let newTripBox1 = trips[0].cloneNode(true);
@@ -200,10 +200,10 @@ function resultCardSeatClassActive() {
       seatClass.classList.add("active");
       let seatClassSelected = seatClass.classList;
       varSeatClass = seatClassSelected[0];
-      
+
       // Determine the index of the selected seatClass1 element
       let selectedSeatIndex = Array.from(seatClasses).indexOf(seatClass);
-      selectedSeatIndex = (selectedSeatIndex+1)/2;
+      selectedSeatIndex = (selectedSeatIndex + 1) / 2;
     });
   });
 }
@@ -211,35 +211,35 @@ function resultCardSeatClassActive() {
 // seat selction
 function seatClicked() {
   varTotalSeat = document.querySelector('.tripBox input[name="adult"]').value
-  varTotalSeat = parseInt(varTotalSeat == '' ? 0 :varTotalSeat);
+  varTotalSeat = parseInt(varTotalSeat == '' ? 0 : varTotalSeat);
 
   let seats = document.querySelectorAll(".ferryStructure .seat");
   seats.forEach((seat) => {
     seat.addEventListener("click", () => {
-      if(seat.classList.contains('selected')){
+      if (seat.classList.contains('selected')) {
         seat.classList.remove("selected");
         totalClickedSeats--;
         varTotalSeatSelected = false;
-        if(seat.classList.contains('royal')){
+        if (seat.classList.contains('royal')) {
           let seatPlace = varBClassSeats.indexOf(seat.getAttribute('data-sn'))
-          varBClassSeats.splice(seatPlace,(seatPlace+1));
-        }else if(seat.classList.contains('luxury')){
+          varBClassSeats.splice(seatPlace, (seatPlace + 1));
+        } else if (seat.classList.contains('luxury')) {
           let seatPlace = varPClassSeats.indexOf(seat.getAttribute('data-sn'))
-          varPClassSeats.splice(seatPlace,(seatPlace+1));
+          varPClassSeats.splice(seatPlace, (seatPlace + 1));
         }
-      }else{
-        if(varTotalSeat <= totalClickedSeats){
+      } else {
+        if (varTotalSeat <= totalClickedSeats) {
           alert(`You already selected ${varTotalSeat} seats.`);
           return;
-        }else{
+        } else {
           seat.classList.add("selected");
           totalClickedSeats++;
-          if(varTotalSeat == totalClickedSeats){
+          if (varTotalSeat == totalClickedSeats) {
             varTotalSeatSelected = true;
           };
-          if(seat.classList.contains('royal')){
+          if (seat.classList.contains('royal')) {
             varBClassSeats.push(seat.getAttribute('data-sn'))
-          }else if(seat.classList.contains('luxury')){
+          } else if (seat.classList.contains('luxury')) {
             varPClassSeats.push(seat.getAttribute('data-sn'))
           }
         }
@@ -254,24 +254,24 @@ function seatNoAllot(tripID) {
   const jsonStringFromStorage = sessionStorage.getItem('nautTripData');
   let ferrys = JSON.parse(jsonStringFromStorage);
   let currentFerry;
-  
+
   ferrys.forEach(ferry => {
     let ferryID = ferry.tripId;
     if (ferryID == tripID) {
       currentFerry = ferry;
     }
   });
-  
+
   let bClass = currentFerry.bClass;
   let pClass = currentFerry.pClass;
-  
+
   let seats = document.querySelectorAll('.ferryStructure .seat');
   seats.forEach(seat => {
     let sd = seat.getAttribute('data-sn');
     if (sd) {
       sd = sd.toLocaleUpperCase();
       seat.innerHTML = sd;
-      
+
       // Check if the seat is booked in bClass
       if (bClass[sd] && bClass[sd].isBooked === 1) {
         seat.classList.add('booked');
@@ -287,20 +287,20 @@ function seatNoAllot(tripID) {
   onlySeatClass();
 }
 
-function onlySeatClass(){
-  if(varSeatClass == ''){return;}
-  else{
+function onlySeatClass() {
+  if (varSeatClass == '') { return; }
+  else {
     varSeatClass = varSeatClass.toLowerCase()
     let structureBox = document.querySelectorAll('.ferryStructure .structureBox');
     structureBox.forEach(seatClass => {
-      if(seatClass.classList.contains(varSeatClass)){
+      if (seatClass.classList.contains(varSeatClass)) {
         seatClass.classList.remove('dnone');
-      }else{seatClass.classList.add('dnone');}
+      } else { seatClass.classList.add('dnone'); }
     });
   }
 }
 
-function passengerDetailTableCreate(totalSeat){
+function passengerDetailTableCreate(totalSeat) {
   let selectedFerry = 'nautika';
   let userPersonalDetails = document.querySelector('.userPersonalDetails');
   let tBody = userPersonalDetails.querySelector('tbody');
@@ -308,8 +308,11 @@ function passengerDetailTableCreate(totalSeat){
   tBody.innerHTML = '';
   tHead.innerHTML = '';
 
-  if(selectedFerry = 'nautika'){
-    tHead.innerHTML = `<tr>
+  let windowWidth = window.innerWidth;
+  if (windowWidth > 950) {
+
+    if (selectedFerry == 'nautika') {
+      tHead.innerHTML = `<tr>
                           <th>Sno</th>
                           <th>Seat</th>
                           <th>Passenger Name</th>
@@ -320,19 +323,33 @@ function passengerDetailTableCreate(totalSeat){
                         </tr>
     `;
 
-    // merging both seat class
-    function mergeAndAddPrefix(b, p) {
-      var bSeats = b.map(seat => 'Royal - ' + seat);
-      var pSeats = p.map(seat => 'Luxury - ' + seat);
-      var mergedSeats = bSeats.concat(pSeats);
-      return mergedSeats;
-    }
-    var resultArray = mergeAndAddPrefix(varBClassSeats, varPClassSeats);
+      // merging both seat class
+      function mergeAndAddPrefix(b, p) {
+        function capitalizeSeat(seat) {
+          var parts = seat.match(/^(\d+)([a-zA-Z])$/);
+          if (parts) {
+            var digitPart = parts[1];
+            var letterPart = parts[2].toUpperCase();
+            return digitPart + letterPart;
+          } else {
+            // Handle invalid seat format if needed
+            return seat;
+          }
+        }
+      
+        var bSeats = b.map(seat => 'Royal - ' + capitalizeSeat(seat));
+        var pSeats = p.map(seat => 'Luxury - ' + capitalizeSeat(seat));
+        var mergedSeats = bSeats.concat(pSeats);
+        return mergedSeats;
+      };
+      
+      var resultArray = mergeAndAddPrefix(varBClassSeats, varPClassSeats);
+      console.log(resultArray);
 
-    for (let i = 0; i < totalSeat; i++) {
-      let tr =  document.createElement('tr');
-      tr.innerHTML = `
-      <td>${i+1}</td>
+      for (let i = 0; i < totalSeat; i++) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+      <td>${i + 1}</td>
       <td>${resultArray[i]}</td>
       <!-- <td>
           <select name="title" id="">
@@ -347,7 +364,7 @@ function passengerDetailTableCreate(totalSeat){
       <td>
           <select name="gender" id="">
               <option value="Male">Male</option>
-              <option value="Femail">Femail</option>
+              <option value="Female">Femail</option>
           </select>
       </td>
       <td style="width:90px;"><input type="number" name="age" placeholder="Age"></td>
@@ -359,13 +376,13 @@ function passengerDetailTableCreate(totalSeat){
       </td>
       <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
       `
-      tBody.appendChild(tr);    
-    }
-  }else{
-    for (let i = 0; i < totalSeat; i++) {
-      let tr =  document.createElement('tr');
-      tr.innerHTML = `
-      <td>${i+1}</td>
+        tBody.appendChild(tr);
+      }
+    } else {
+      for (let i = 0; i < totalSeat; i++) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+      <td>${i + 1}</td>
       <td>
           <select name="title" id="">
               <option value="MR">MR</option>
@@ -379,7 +396,7 @@ function passengerDetailTableCreate(totalSeat){
       <td>
           <select name="gender" id="">
               <option value="Male">Male</option>
-              <option value="Femail">Femail</option>
+              <option value="Female">Femail</option>
           </select>
       </td>
       <td style="width:70px"><input type="number" name="age" placeholder="Age"></td>
@@ -391,25 +408,125 @@ function passengerDetailTableCreate(totalSeat){
       </td>
       <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
       `
-      tBody.appendChild(tr);    
+        tBody.appendChild(tr);
+      }
+    }
+  } else {
+    if (selectedFerry == 'nautika') {
+      tHead.innerHTML = `<tr>
+                            <th>Seat</th>
+                            <th>Details</th>
+                          </tr>
+      `;
+
+      // merging both seat class
+      function mergeAndAddPrefix(b, p) {
+        function capitalizeSeat(seat) {
+          var parts = seat.match(/^(\d+)([a-zA-Z])$/);
+          if (parts) {
+            var digitPart = parts[1];
+            var letterPart = parts[2].toUpperCase();
+            return digitPart + letterPart;
+          } else {
+            // Handle invalid seat format if needed
+            return seat;
+          }
+        }
+      
+        var bSeats = b.map(seat => 'Royal - ' + capitalizeSeat(seat));
+        var pSeats = p.map(seat => 'Luxury - ' + capitalizeSeat(seat));
+        var mergedSeats = bSeats.concat(pSeats);
+        return mergedSeats;
+      }
+      
+      var resultArray = mergeAndAddPrefix(varBClassSeats, varPClassSeats);
+      console.log(resultArray);
+      
+
+      for (let i = 0; i < totalSeat; i++) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td>${resultArray[i]}</td>
+        <td>
+            <div class="formBox1">
+              <div class="inner">
+                <div class="group">
+                  <input type="text" name="name" placeholder="Name">
+                </div>
+                <div class="group small">
+                  <select name="gender" id="">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+                <div class="group small">
+                  <input type="number" name="age" placeholder="Age">
+                </div>
+                <div class="group">
+                  <select name="nationality" id="" onchange="nationality(value)">
+                    <option value="India">India</option>
+                    <option value="China">China</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <input type="text" name="idNumber" placeholder="ID Number" class="idNumber">
+                </div>
+              </div>
+            </div>
+        </td>
+        `;
+        tBody.appendChild(tr);
+      }
+    } else {
+      for (let i = 0; i < totalSeat; i++) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td>${i + 1}</td>
+        <td>
+            <select name="title" id="">
+                <option value="MR">MR</option>
+                <option value="MRS">MRS</option>
+                <option value="Miss">Miss</option>
+                <option value="Master">Master</option>
+                <option value="DR">DR</option>
+            </select>
+        </td>
+        <td><input type="text" name="name" placeholder="Name"></td>
+        <td>
+            <select name="gender" id="">
+                <option value="Male">Male</option>
+                <option value="Femail">Femail</option>
+            </select>
+        </td>
+        <td style="width:70px"><input type="number" name="age" placeholder="Age"></td>
+        <td>
+            <select name="nationality" id="" onchange="nationality(value)">
+                <option value="India">India</option>
+                <option value="China">China</option>
+            </select>
+        </td>
+        <td><input type="text" name="idNumber" placeholder="ID Number" class="idNumber"></td>
+        `
+        tBody.appendChild(tr);
+      }
     }
   }
 
+};
+window.addEventListener('resize', passengerDetailTableCreate(varTotalSeat))
 
-}
+function passengerDetailsPage() {
 
-function passengerDetailsPage(){
-
-  if(!varTotalSeatSelected){alert(`You Didn't selected ${document.querySelector('.tripBox input[name="adult"]').value} seats.`);return;}
+  if (!varTotalSeatSelected) { alert(`You Didn't selected ${document.querySelector('.tripBox input[name="adult"]').value} seats.`); return; }
   document.querySelector(".seatSelectionMainBox").classList.add("dnone");
   document.querySelector(".userDetailsMainBox").classList.remove("dnone");
 
   let TS = document.querySelector('input[name="adult"]').value;
-  let totalSeat = parseInt(TS == '' ? 0 :TS);
+  let totalSeat = parseInt(TS == '' ? 0 : TS);
   passengerDetailTableCreate(totalSeat)
 }
 
-function autoDateSet(){
+function autoDateSet() {
   let date = new Date();
   let CM = date.getMonth() + 1; // Months are zero-based, so add 1
   let CD = date.getDate();
@@ -417,10 +534,9 @@ function autoDateSet(){
   let FD = CD > 9 ? CD : '0' + CD;
   let cDateString = date.getFullYear() + '-' + FM + '-' + FD;
   document.querySelector('.tripBox input[name="date"]').value = cDateString;
-}autoDateSet();
+} autoDateSet();
 
 
 
 // delete after work
 
-// passengerDetailsPage();
