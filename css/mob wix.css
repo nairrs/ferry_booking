@@ -1,0 +1,19 @@
+/* Mobile Styles */
+@media only screen and (max-width: 950px) {
+
+.searchMainBox .formBox1{padding-bottom: 1rem;max-width:500px;margin:auto;}
+.searchMainBox .formBox1 input, .searchMainBox .formBox1 select{border:1px solid lightblue;}
+.searchMainBox .formBox1 .trip{gap:0px;}
+.searchMainBox .formBox1 .tripBox .group{border:none;margin-bottom:0;padding:.5rem;}
+.searchMainBox .formBox1 .tripBox .group.block{flex: 1 1 90%;}
+.searchMainBox .formBox1 .tripBox .group label{padding-bottom:.5rem;margin-left:.5rem;}
+.searchMainBox .formBox1 .tripBox .group.small{max-width: unset;flex:1 1 150px;}
+
+.userPersonalDetails{width:100%;}
+.userPersonalDetails table{margin:auto;}
+.userPersonalDetails tr td:first-child{padding-right:1rem;}
+.userPersonalDetails .formBox1 .inner{display:flex;flex-wrap:wrap;gap:.5rem;max-width:300px;}
+.userPersonalDetails .formBox1 .group{flex:1 1 calc(100% - 1rem);min-width:unset;max-width:unset;}
+.userPersonalDetails .formBox1 .group.small{flex:1 1 calc(40% - 1rem);}
+
+}
